@@ -2,23 +2,42 @@
 
 int main()
 {
-    Stack stk = {.data = nullptr, .data_size = 0, .data_capacity = INIT_CAPACITY};
-    StackCtor (&stk, INIT_CAPACITY);
+    Stack stk1 = {};
+    StackCtor  (&stk1, INIT_CAPACITY);
 
-    StackPush  (&stk, 10);
-    StackPush  (&stk, 20);
-    StackPush  (&stk, 30);
-    StackPush  (&stk, 40);
-    StackPush  (&stk, 50);
-    StackPrint (&stk);
+    StackPush  (&stk1, 10);
+    StackPush  (&stk1, 20);
+    StackPush  (&stk1, 30);
+    StackPush  (&stk1, 40);
+    StackPush  (&stk1, 50);
+    StackPrint (&stk1);
 
-    Elem_t x;
-    StackPop (&stk, &x);
+    Elem_t x = 0;
+    StackPop   (&stk1, &x);
 
-    StackPrint (&stk);
+    StackPrint (&stk1);
 
-    StackDtor (&stk);
-    //printf("\n" OUTPUT_F "\n", x);
+    StackDtor  (&stk1);
+
+/////////////////////////////////////////////
+
+    Stack stk2 = {};
+    StackCtor (&stk2, INIT_CAPACITY);
+
+    StackPush  (&stk2, 10);
+    StackPush  (&stk2, 20);
+
+    StackPrint (&stk2);
+
+    Elem_t y = 0;
+    stk2.data_capacity = 1;
+    stk2.data = nullptr;
+
+    StackPop   (&stk2, &y);
+    StackPop   (&stk2, &y);
+    StackPop   (&stk2, &y);
+
+    StackDtor  (&stk2);
 
     return 0;
 }

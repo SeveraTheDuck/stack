@@ -10,6 +10,8 @@ typedef int Elem_t;
 const Elem_t POISON = -31415926;
 #define OUTPUT_F "%d"
 
+#define STACKDUMP(stk) StackDump(stk, __FILE__, __LINE__, stack_err)
+
 const size_t INIT_CAPACITY = 2;
 
 const size_t RESIZE_MULTIPLIER = 2;
@@ -37,18 +39,22 @@ enum ErrorType
     STACK_SIZE_OUT_OF_RANGE        = 16
 };
 
-ErrorType StackCtor (Stack* stk, size_t stack_capacity);
+ErrorType StackCtor   (Stack* stk, size_t stack_capacity);
 
-ErrorType StackDtor (Stack* stk);
+ErrorType StackDtor   (Stack* stk);
 
-ErrorType StackResize(Stack* stk, ResizeMode direction);
+ErrorType StackResize (Stack* stk, ResizeMode direction);
 
-ErrorType StackPush (Stack* stk, Elem_t value);
+ErrorType StackPush   (Stack* stk, Elem_t value);
 
-ErrorType StackPop (Stack* stk, Elem_t* return_value);
+ErrorType StackPop    (Stack* stk, Elem_t* return_value);
 
-ErrorType StackPrint (Stack* stk);
+ErrorType StackPrint  (Stack* stk);
 
 ErrorType StackVerify (Stack* stk);
+
+void StackDump (Stack* stk, const char* file_name, const int line, ErrorType stack_err);
+
+void StackErrorOutput (unsigned int stack_err);
 
 #endif
