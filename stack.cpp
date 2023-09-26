@@ -4,7 +4,6 @@
 // для размера можно для ядовитости использовать INT_MAX, можно int для отрицательных
 // -1U - беззнаковая -1, максимальное беззнаковое число
 // -Е - раскрытие всех define. лучше при этом не использовать std
-// если size < 0 и capacity < 0 не выводить массив, иначе - что-то можно вывести
 //
 
 ErrorType StackCtor (Stack* stk,  size_t stack_capacity,
@@ -19,35 +18,37 @@ ErrorType StackCtor (Stack* stk,  size_t stack_capacity,
         return STACK_NULL_POINTER;
     }
 
-    stk->left_canary = CANARY_VALUE;
-    stk->data = (Elem_t*) calloc (stack_capacity, sizeof(Elem_t));
+    stk->data = (Elem_t*) ((Canary_t*) calloc (2 * sizeof (Canary_t) + //две операции разом
+                            stack_capacity * sizeof (Elem_t), 1) + 1);
+
+    if (!stk->data)
+    {
+        fprintf (stderr, "STACK_DATA_NULL_POINTER\n");
+        return STACK_DATA_NULL_POINTER;
+    }
+
+    stk->left_canary  = CANARY_VALUE;
+    stk->right_canary = CANARY_VALUE;
+
+    FillDataCanary(stk);
+
     stk->data_size = 0;
     stk->data_capacity = stack_capacity;
     stk->init_name = init_name;
     stk->init_line = init_line;
     stk->init_file = init_file;
     stk->init_func = init_func;
-    stk->right_canary = CANARY_VALUE;
 
-    ErrorType stack_err = StackVerify(stk);
-    if (stack_err)
-    {
-        STACKDUMP(stk);
-        return stack_err;
-    }
+    STACKVERIFY(stk);
 
     return stack_err;
 }
 
 ErrorType StackDtor (Stack* stk)
 {
-    ErrorType stack_err = StackVerify(stk);
-    if (stack_err)
-    {
-        STACKDUMP(stk);
-    }
+    STACKVERIFY(stk);
 
-    free (stk->data);
+    free ((char*) stk->data - sizeof(Canary_t));
     stk->data          = nullptr;
     stk->data_size     = 0;
     stk->data_capacity = 0;
@@ -55,40 +56,42 @@ ErrorType StackDtor (Stack* stk)
     return stack_err;
 }
 
+ErrorType FillDataCanary(Stack* stk)
+{
+    *((Canary_t*)(void*)  stk->data - 1)                  = CANARY_VALUE;
+    *( Canary_t*)(void*) (stk->data + stk->data_capacity) = CANARY_VALUE;
+
+    STACKVERIFY(stk);
+
+    return stack_err;
+}
+
 ErrorType StackResize(Stack* stk, ResizeMode direction)
 {
-    ErrorType stack_err = StackVerify(stk);
-    if (stack_err)
-    {
-        STACKDUMP(stk);
-        return stack_err;
-    }
+    STACKVERIFY(stk);
 
     switch (direction)
     {
         case EXPAND:
             stk->data_capacity *= RESIZE_MULTIPLIER;
-            stk->data = (Elem_t*) realloc (stk->data,
-                                           stk->data_capacity * sizeof(Elem_t));
             break;
+
         case SHORTEN:
             stk->data_capacity /= RESIZE_MULTIPLIER;
-            stk->data = (Elem_t*) realloc (stk->data,
-                                           stk->data_capacity * sizeof(Elem_t));
             break;
     }
+
+    stk->data = (Elem_t*) ((Canary_t*) realloc ((char*) stk->data - sizeof (Canary_t),
+                            stk->data_capacity * sizeof (Elem_t) +
+                            2 * sizeof (Canary_t)) + 1);
+    FillDataCanary(stk);
 
     return stack_err;
 }
 
 ErrorType StackPush (Stack* stk, Elem_t value)
 {
-    ErrorType stack_err = StackVerify(stk);
-    if (stack_err)
-    {
-        STACKDUMP(stk);
-        return stack_err;
-    }
+    STACKVERIFY(stk);
 
     if (stk->data_size == stk->data_capacity)
         StackResize(stk, EXPAND);
@@ -100,15 +103,13 @@ ErrorType StackPush (Stack* stk, Elem_t value)
 
 ErrorType StackPop (Stack* stk, Elem_t* return_value)
 {
-    ErrorType stack_err = StackVerify(stk);
-    if (stack_err)
-    {
-        STACKDUMP(stk);
-        return stack_err;
-    }
+    STACKVERIFY(stk);
 
-    if (stk->data_size * 4 <= stk->data_capacity &&
-                              stk->data_size >= INIT_CAPACITY)
+    //fprintf(stderr, "%du I AM STACK_ERR", (unsigned int) stack_err);???
+    // if (stk->data_size * 4 <= stk->data_capacity &&
+    //                         stk->data_size >= INIT_CAPACITY)
+    if (INIT_CAPACITY <= stk->data_size &&
+                         stk->data_size * 4 <= stk->data_capacity)
         StackResize(stk, SHORTEN);
 
     *return_value = stk->data[--stk->data_size];
@@ -119,12 +120,7 @@ ErrorType StackPop (Stack* stk, Elem_t* return_value)
 
 ErrorType StackPrint (Stack* stk)
 {
-    ErrorType stack_err = StackVerify(stk);
-    if (stack_err)
-    {
-        STACKDUMP(stk);
-        return stack_err;
-    }
+    STACKVERIFY(stk);
 
     for (size_t i = 0; i < stk->data_size; ++i)
     {
@@ -153,7 +149,10 @@ ErrorType StackVerify (Stack* stk)
         stack_err |= (unsigned int) STACK_LEFT_CANARY_DAMAGED;
     if (stk->right_canary != CANARY_VALUE)
         stack_err |= (unsigned int) STACK_RIGHT_CANARY_DAMAGED;
-
+    if (*((Canary_t*)(void*) stk->data - 1) != CANARY_VALUE)
+        stack_err |= (unsigned int) STACK_DATA_LEFT_CANARY_DAMAGED;
+    if (*(Canary_t*)(void*) (stk->data + stk->data_capacity) != CANARY_VALUE)
+        stack_err |= (unsigned int) STACK_DATA_RIGHT_CANARY_DAMAGED;
 
     return (ErrorType) stack_err;
 }
@@ -163,7 +162,7 @@ void StackDump (Stack* stk, const char* file_name,
                             const char* func_name,
                             ErrorType stack_err)
 {
-    fprintf(stderr, "Stack [%p] \"%s\" from %s(%zd) %s()\n", stk, stk->init_name,
+    fprintf(stderr, "Stack [%p] \"%s\" \n       from %s(%zd) %s()\n", stk, stk->init_name,
                                                            stk->init_file,
                                                            stk->init_line,
                                                            stk->init_func);
@@ -171,12 +170,23 @@ void StackDump (Stack* stk, const char* file_name,
 
     fprintf(stderr, "\n{\n");
 
-    fprintf(stderr, "left_canary  = " CANARY_F, stk->left_canary);
+    fprintf(stderr, "left_stack_canary  = " CANARY_F, stk->left_canary);
     if (stk->left_canary == CANARY_VALUE)
         fprintf(stderr, " (STANDART VALUE)");
-    fprintf(stderr, "\nright_canary = " CANARY_F, stk->right_canary);
+    fprintf(stderr, "\n");
+    fprintf(stderr, "right_stack_canary = " CANARY_F, stk->right_canary);
     if (stk->right_canary == CANARY_VALUE)
-        fprintf(stderr, " (STANDART VALUE)\n");
+        fprintf(stderr, " (STANDART VALUE)");
+    fprintf(stderr, "\n");
+
+    fprintf(stderr, "left_data_canary   = " CANARY_F, *((Canary_t*)(void*)stk->data - 1));
+    if (*((Canary_t*)(void*)stk->data - 1) == CANARY_VALUE)
+        fprintf(stderr, " (STANDART VALUE)");
+    fprintf(stderr, "\n");
+    fprintf(stderr, "right_data_canary  = " CANARY_F, *(Canary_t*)(void*)(stk->data + stk->data_capacity));
+    if (*(Canary_t*)(void*)(stk->data + stk->data_capacity) == CANARY_VALUE)
+        fprintf(stderr, " (STANDART VALUE)");
+    fprintf(stderr, "\n");
 
     fprintf(stderr, "size     = %zd\n", stk->data_size);
     fprintf(stderr, "capacity = %zd\n", stk->data_capacity);
@@ -246,6 +256,12 @@ void StackErrorOutput (unsigned int stack_err)
 
     if (stack_err & (unsigned int) STACK_RIGHT_CANARY_DAMAGED)
         fprintf (stderr, "\tERROR 7: STACK_RIGHT_CANARY_DAMAGED\n");
+
+    if (stack_err & (unsigned int) STACK_DATA_LEFT_CANARY_DAMAGED)
+        fprintf (stderr, "\tERROR 6: STACK_DATA_LEFT_CANARY_DAMAGED\n");
+
+    if (stack_err & (unsigned int) STACK_DATA_RIGHT_CANARY_DAMAGED)
+        fprintf (stderr, "\tERROR 7: STACK_DATA_RIGHT_CANARY_DAMAGED\n");
 
     fprintf(stderr, "\n");
 }
