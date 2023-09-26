@@ -4,13 +4,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
+#include "config.h"
 
-typedef int Elem_t;
-const Elem_t POISON = -31415926;
-#define OUTPUT_F "%d"
+#define STACK_CTOR(stk) StackCtor((stk), #stk,\
+                                   __LINE__, __FILE__, __func__)
 
-#define STACK_CTOR(stk, stack_capacity) StackCtor((stk), stack_capacity, #stk,\
-                                                  __LINE__, __FILE__, __func__)
+#define STACK_CTOR_CAP(stk, stack_capacity) StackCtor((stk), #stk,\
+                                                       __LINE__, __FILE__, __func__,\
+                                                       stack_capacity)
 
 #define STACKDUMP(stk) StackDump(stk, __FILE__, __LINE__, __func__, stack_err)
 
@@ -26,8 +27,6 @@ typedef unsigned long long Canary_t;
 #define CANARY_F "%llu"
 const Canary_t CANARY_VALUE = 31415926UL;
 
-const size_t INIT_CAPACITY     = 2;
-const size_t RESIZE_MULTIPLIER = 2;
 
 struct Stack
 {
@@ -63,11 +62,12 @@ enum ErrorType
     STACK_HASH_DAMAGED              = 512
 };
 
-ErrorType StackCtor   (Stack* stk,  size_t stack_capacity,
+ErrorType StackCtor   (Stack* stk,
                        const char*  init_name,
                        const size_t init_line,
                        const char*  file_name,
-                       const char*  init_func);
+                       const char*  init_func,
+                       size_t stack_capacity = INIT_CAPACITY);
 
 ErrorType StackDtor      (Stack* stk);
 

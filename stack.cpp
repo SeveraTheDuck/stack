@@ -1,4 +1,5 @@
 #include "stack.h"
+#include "config.h"
 
 // realloc в мусоре - заполнить POISON
 // для размера можно для ядовитости использовать INT_MAX, можно int для отрицательных
@@ -6,11 +7,12 @@
 // -Е - раскрытие всех define. лучше при этом не использовать std
 //
 
-ErrorType StackCtor (Stack* stk,  size_t stack_capacity,
+ErrorType StackCtor (Stack* stk,
                      const char*  init_name,
                      const size_t init_line,
                      const char*  init_file,
-                     const char*  init_func)
+                     const char*  init_func,
+                     size_t stack_capacity)
 {
     if (!stk)
     {
@@ -18,8 +20,15 @@ ErrorType StackCtor (Stack* stk,  size_t stack_capacity,
         return STACK_NULL_POINTER;
     }
 
-    stk->data = (Elem_t*) ((Canary_t*) calloc (2 * sizeof (Canary_t) + //две операции разом
-                            stack_capacity * sizeof (Elem_t), 1) + 1);
+    stk->data_size = 0;
+    stk->data_capacity = stack_capacity;
+    stk->init_name = init_name;
+    stk->init_line = init_line;
+    stk->init_file = init_file;
+    stk->init_func = init_func;
+
+    stk->data = (Elem_t*) calloc (2 * sizeof (Canary_t) +
+                                  stack_capacity * sizeof (Elem_t), 1);
 
     if (!stk->data)
     {
@@ -27,17 +36,12 @@ ErrorType StackCtor (Stack* stk,  size_t stack_capacity,
         return STACK_DATA_NULL_POINTER;
     }
 
+    stk->data = (Elem_t*) ((Canary_t*)(void*) stk->data + 1);
+
     stk->left_canary  = CANARY_VALUE;
     stk->right_canary = CANARY_VALUE;
 
     FillDataCanary(stk);
-
-    stk->data_size = 0;
-    stk->data_capacity = stack_capacity;
-    stk->init_name = init_name;
-    stk->init_line = init_line;
-    stk->init_file = init_file;
-    stk->init_func = init_func;
 
     STACKVERIFY(stk);
 
