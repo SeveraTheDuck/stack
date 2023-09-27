@@ -20,7 +20,7 @@ int main()
     StackDtor  (&stk1);
 
 /////////////////////////////////////////////
-//
+
     Stack stk2 = {};
     STACK_CTOR(&stk2);
 
