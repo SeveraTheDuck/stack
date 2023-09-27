@@ -9,15 +9,7 @@ Error_t StackCtor (Stack* stk,
                    const char*  init_func,
                    size_t stack_capacity)
 {
-    stk->stack_err = {};
-
-    if (!stk)
-    {
-        fprintf (stderr, "STACK_NULL_POINTER\n");
-        stk->stack_err.STACK_ERROR_OCCURED = 1;
-        stk->stack_err.STACK_NULL_POINTER  = 1;
-        return stk->stack_err.STACK_ERROR_OCCURED;
-    }
+    assert (stk);
 
     stk->data_size = 0;
     stk->data_capacity = stack_capacity;
@@ -25,19 +17,20 @@ Error_t StackCtor (Stack* stk,
     stk->init_line = init_line;
     stk->init_file = init_file;
     stk->init_func = init_func;
+    stk->stack_err = {};
 
     StackDataAlloc (stk, nullptr);
 
-    STACKVERIFY(stk);
+    STACKVERIFY (stk);
 
     return stk->stack_err.STACK_ERROR_OCCURED;
 }
 
 Error_t StackDtor (Stack* stk)
 {
-    STACKVERIFY(stk);
+    STACKVERIFY (stk);
 
-    free ((char*) stk->data - sizeof(Canary_t));
+    free ((char*) stk->data - sizeof (Canary_t));
     stk->data          = nullptr;
 
     stk->data_size     = 0;
@@ -53,24 +46,18 @@ Error_t StackDtor (Stack* stk)
 
     stk                = nullptr;
 
-    return 0;
+    return STACK_DTOR_NO_ERROR;
 }
 
 Error_t StackDataAlloc (Stack* stk, Elem_t* allocated_memory)
 {
-    if (!stk)
-    {
-        fprintf (stderr, "STACK_NULL_POINTER\n");
-        stk->stack_err.STACK_ERROR_OCCURED = 1;
-        stk->stack_err.STACK_NULL_POINTER  = 1;
-        return stk->stack_err.STACK_NULL_POINTER;
-    }
+    assert (stk);
 
-    if ((stk->data_capacity * sizeof(Elem_t)) % sizeof(Canary_t))
+    if ((stk->data_capacity  *  sizeof (Elem_t))  % sizeof (Canary_t))
     {
-        stk->data_capacity += (sizeof(Canary_t) - (stk->data_capacity *
-                               sizeof(Elem_t))  % sizeof(Canary_t)) /
-                               sizeof (Elem_t);
+         stk->data_capacity += (sizeof (Canary_t) - (stk->data_capacity *
+                                sizeof (Elem_t))  % sizeof (Canary_t)) /
+                                sizeof (Elem_t);
     }
 
     stk->data = (Elem_t*) realloc (allocated_memory,
@@ -87,19 +74,19 @@ Error_t StackDataAlloc (Stack* stk, Elem_t* allocated_memory)
 
     stk->data = (Elem_t*) ((Canary_t*)(void*) stk->data + 1);
 
-    FillCanary(stk);
+    FillCanary (stk);
 
     for (size_t i = stk->data_size; i < stk->data_capacity; ++i)
     {
         *(stk->data + i) = POISON;
     }
 
-    STACKVERIFY(stk);
+    STACKVERIFY (stk);
 
     return stk->stack_err.STACK_ERROR_OCCURED;
 }
 
-Error_t FillCanary(Stack* stk)
+Error_t FillCanary (Stack* stk)
 {
     stk->left_canary  = CANARY_VALUE;
     stk->right_canary = CANARY_VALUE;
@@ -107,14 +94,14 @@ Error_t FillCanary(Stack* stk)
     *((Canary_t*)(void*)  stk->data - 1)                  = CANARY_VALUE;
     *( Canary_t*)(void*) (stk->data + stk->data_capacity) = CANARY_VALUE;
 
-    STACKVERIFY(stk);
+    STACKVERIFY (stk);
 
     return stk->stack_err.STACK_ERROR_OCCURED;
 }
 
-Error_t StackResize(Stack* stk, ResizeMode direction)
+Error_t StackResize (Stack* stk, ResizeMode direction)
 {
-    STACKVERIFY(stk);
+    STACKVERIFY (stk);
 
     switch (direction)
     {
@@ -127,14 +114,14 @@ Error_t StackResize(Stack* stk, ResizeMode direction)
             break;
     }
 
-    StackDataAlloc(stk, (Elem_t*) ((Canary_t*)(void*) stk->data - 1));
+    StackDataAlloc (stk, (Elem_t*) ((Canary_t*)(void*) stk->data - 1));
 
     return stk->stack_err.STACK_ERROR_OCCURED;
 }
 
 Error_t StackPush (Stack* stk, Elem_t value)
 {
-    STACKVERIFY(stk);
+    STACKVERIFY (stk);
 
     if (stk->data_size == stk->data_capacity)
     {
@@ -148,13 +135,13 @@ Error_t StackPush (Stack* stk, Elem_t value)
 
 Error_t StackPop (Stack* stk, Elem_t* return_value)
 {
-    STACKVERIFY(stk);
+    STACKVERIFY (stk);
 
     if (INIT_CAPACITY <= stk->data_size &&
                          stk->data_size * RESIZE_MULTIPLIER * RESIZE_MULTIPLIER <=
                          stk->data_capacity)
     {
-        StackResize(stk, SHORTEN);
+        StackResize (stk, SHORTEN);
     }
 
     *return_value = stk->data[--stk->data_size];
@@ -165,7 +152,7 @@ Error_t StackPop (Stack* stk, Elem_t* return_value)
 
 Error_t StackPrint (Stack* stk)
 {
-    STACKVERIFY(stk);
+    STACKVERIFY (stk);
 
     for (size_t i = 0; i < stk->data_size; ++i)
     {

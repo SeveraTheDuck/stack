@@ -7,6 +7,8 @@ typedef unsigned long long Canary_t;
 #define CANARY_F "%llu"
 const Canary_t CANARY_VALUE = 31415926UL;
 
+const Error_t STACK_DTOR_NO_ERROR         = 0;
+
 struct ErrorType
 {
     Error_t STACK_ERROR_OCCURED             : 1;

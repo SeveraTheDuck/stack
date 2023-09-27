@@ -3,7 +3,7 @@
 int main()
 {
     Stack stk1 = {};
-    STACK_CTOR(&stk1);
+    STACK_CTOR (&stk1);
 
     StackPush  (&stk1, 10);
     StackPush  (&stk1, 20);
@@ -22,7 +22,7 @@ int main()
 /////////////////////////////////////////////
 
     Stack stk2 = {};
-    STACK_CTOR(&stk2);
+    STACK_CTOR (&stk2);
 
     StackPush  (&stk2, 10);
     StackPush  (&stk2, 20);

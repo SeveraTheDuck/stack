@@ -8,17 +8,18 @@
 #include "config.h"
 #include "const.h"
 
-#define STACK_CTOR(stk) StackCtor((stk), #stk,\
-                                   __LINE__, __FILE__, __func__)
+#define STACK_CTOR(stk) StackCtor ((stk), #stk,\
+                                    __LINE__, __FILE__, __func__)
 
-#define STACK_CTOR_CAP(stk, stack_capacity) StackCtor((stk), #stk,\
-                                                       __LINE__, __FILE__, __func__,\
-                                                       stack_capacity)
+#define STACK_CTOR_CAP(stk, stack_capacity) StackCtor ((stk), #stk,\
+                                                        __LINE__, __FILE__, __func__,\
+                                                        stack_capacity)
 
-#define STACKDUMP(stk) StackDump(stk, __FILE__, __LINE__, __func__)
+#define STACKDUMP(stk) StackDump (stk, __FILE__, __LINE__, __func__)
 
 #define STACKVERIFY(stk)\
-    (stk)->stack_err.STACK_ERROR_OCCURED = StackVerify(stk);\
+    assert (stk);\
+    (stk)->stack_err.STACK_ERROR_OCCURED = StackVerify (stk);\
     if ((stk)->stack_err.STACK_ERROR_OCCURED)\
     {\
         STACKDUMP(stk);\
