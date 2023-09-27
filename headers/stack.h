@@ -62,16 +62,18 @@ enum ErrorType
     STACK_HASH_DAMAGED              = 512
 };
 
-ErrorType StackCtor   (Stack* stk,
-                       const char*  init_name,
-                       const size_t init_line,
-                       const char*  file_name,
-                       const char*  init_func,
-                       size_t stack_capacity = INIT_CAPACITY);
+ErrorType StackCtor      (Stack* stk,
+                          const char*  init_name,
+                          const size_t init_line,
+                          const char*  file_name,
+                          const char*  init_func,
+                          size_t stack_capacity = INIT_CAPACITY);
 
 ErrorType StackDtor      (Stack* stk);
 
-ErrorType FillDataCanary (Stack* stk);
+ErrorType StackDataAlloc (Stack* stk, Elem_t* allocated_memory);
+
+ErrorType FillCanary     (Stack* stk);
 
 ErrorType StackResize    (Stack* stk, ResizeMode direction);
 
@@ -83,11 +85,21 @@ ErrorType StackPrint     (Stack* stk);
 
 ErrorType StackVerify    (Stack* stk);
 
-void StackDump (Stack* stk, const char* file_name,
-                            const int line,
-                            const char* func_name,
-                            ErrorType stack_err);
+void StackDump           (Stack* stk, const char* file_name,
+                                      const int line,
+                                      const char* func_name,
+                                      ErrorType stack_err);
 
-void StackErrorOutput (unsigned int stack_err);
+void StackDumpHeader     (Stack* stk, const char* file_name,
+                                      const int line,
+                                      const char* func_name);
+
+void StackDumpCanary     (Stack* stk);
+
+void StackDumpInfo       (Stack* stk, ErrorType stack_err);
+
+void StackDumpData       (Stack* stk);
+
+void StackErrorOutput    (unsigned int stack_err);
 
 #endif
