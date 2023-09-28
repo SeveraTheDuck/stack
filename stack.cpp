@@ -73,7 +73,7 @@ Error_t StackDataAlloc (Stack* const stk, Elem_t* const allocated_memory)
 #ifdef CANARY_PROTECTION
     if ((stk->data_capacity  *  sizeof (Elem_t))  % sizeof (Canary_t))
     {
-        stk->data_capacity += (sizeof (Canary_t) - (stk->data_capacity *
+        stk->data_capacity +=  (sizeof (Canary_t) - (stk->data_capacity *
                                 sizeof (Elem_t))  % sizeof (Canary_t)) /
                                 sizeof (Elem_t);
     }
@@ -85,8 +85,7 @@ Error_t StackDataAlloc (Stack* const stk, Elem_t* const allocated_memory)
     new_size += 2 * sizeof (Canary_t);
 #endif
 
-    stk->data = (Elem_t*) calloc (new_size, 1);
-    fprintf (stdin, "%p", allocated_memory);
+    stk->data = (Elem_t*) realloc (allocated_memory, new_size);
 
     if (StackDataPtrError (stk))
     {
@@ -168,7 +167,7 @@ Error_t StackPush (Stack* const stk, const Elem_t value)
     }
 #endif
 
-    stk->data[stk->data_size] = value;
+    stk->data[stk->data_size++] = value;
 
 #ifdef HASH_PROTECTION
     stk->hash_value++;
@@ -178,10 +177,10 @@ Error_t StackPush (Stack* const stk, const Elem_t value)
         stk->hash_value += (Hash_t) *(hash_ptr + i);
     }
 
-    stk->hash_value--;
     StackHashError (stk);
 #endif
 
+    STACKVERIFY (stk);
     return stk->stack_err.STACK_ERROR_OCCURED;
 }
 
@@ -218,6 +217,7 @@ Error_t StackPop (Stack* const stk, Elem_t* const return_value)
     StackHashError (stk);
 #endif
 
+    STACKVERIFY (stk);
     return stk->stack_err.STACK_ERROR_OCCURED;
 }
 

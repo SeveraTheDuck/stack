@@ -9,12 +9,14 @@ Hash_t StackFindHash (Stack* stk)
 
     char* ptr = (char*) stk;
     Hash_t hash = 0;
+    size_t begin  = 0;
     size_t border =  sizeof (Stack) - sizeof (Hash_t);
 #ifdef CANARY_PROTECTION
+    begin  += sizeof (Canary_t);
     border -= sizeof (Canary_t);
 #endif
 
-    for (size_t i = 0; i < border ; ++i)
+    for (size_t i = begin; i < border ; ++i)
     {
         hash += (Hash_t) *(ptr + i);
     }

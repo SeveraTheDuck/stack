@@ -105,7 +105,7 @@ Error_t StackVerify (Stack* const stk)
     }
 
 #ifdef CANARY_PROTECTION
-    if (stk->left_canary != CANARY_VALUE)
+    if (stk->right_canary != CANARY_VALUE)
     {
         stk->stack_err.STACK_LEFT_CANARY_DAMAGED       = 1;
     }
