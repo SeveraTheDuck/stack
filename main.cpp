@@ -31,7 +31,7 @@ int main()
 
     Elem_t y = 0;
     stk2.data_capacity = 1;
-    stk2.left_canary = 0;
+    //stk2.left_canary = 0;
 
     StackPop   (&stk2, &y);
     StackPop   (&stk2, &y);

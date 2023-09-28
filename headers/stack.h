@@ -26,25 +26,27 @@
         return (stk)->stack_err.STACK_ERROR_OCCURED;\
     }
 
-Error_t StackCtor      (Stack* stk,
-                        const char*  init_name,
-                        const size_t init_line,
-                        const char*  file_name,
-                        const char*  init_func,
+Error_t StackCtor      (Stack* const stk,
+                        const char*  const init_name,
+                        const size_t       init_line,
+                        const char*  const file_name,
+                        const char*  const init_func,
                         size_t stack_capacity = INIT_CAPACITY);
 
 Error_t StackDtor      (Stack* stk);
 
-Error_t StackDataAlloc (Stack* stk, Elem_t* allocated_memory);
+Error_t StackDataAlloc (Stack* const stk, Elem_t* const allocated_memory);
 
-Error_t FillCanary     (Stack* stk);
+#ifdef CANARY_PROTECTION
+    Error_t FillCanary (Stack* const stk);
+#endif
 
-Error_t StackResize    (Stack* stk, ResizeMode direction);
+Error_t StackResize    (Stack* const stk, const ResizeMode direction);
 
-Error_t StackPush      (Stack* stk, Elem_t value);
+Error_t StackPush      (Stack* const stk, const Elem_t value);
 
-Error_t StackPop       (Stack* stk, Elem_t* return_value);
+Error_t StackPop       (Stack* const stk, Elem_t* const return_value);
 
-Error_t StackPrint     (Stack* stk);
+Error_t StackPrint     (Stack* const stk);
 
 #endif
