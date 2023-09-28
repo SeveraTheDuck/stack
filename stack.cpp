@@ -1,8 +1,8 @@
-#include "stack.h"
-#include "errors.h"
+#include "headers/stack.h"
+#include "headers/errors.h"
 
 #ifdef HASH_PROTECTION
-    #include "hash.h"
+    #include "headers/hash.h"
 #endif
 
 Error_t StackCtor (Stack* const stk,
@@ -85,7 +85,8 @@ Error_t StackDataAlloc (Stack* const stk, Elem_t* const allocated_memory)
     new_size += 2 * sizeof (Canary_t);
 #endif
 
-    stk->data = (Elem_t*) realloc (allocated_memory, new_size);
+    stk->data = (Elem_t*) calloc (new_size, 1);
+    fprintf (stdin, "%p", allocated_memory);
 
     if (StackDataPtrError (stk))
     {
@@ -167,7 +168,7 @@ Error_t StackPush (Stack* const stk, const Elem_t value)
     }
 #endif
 
-    stk->data[stk->data_size++] = value;
+    stk->data[stk->data_size] = value;
 
 #ifdef HASH_PROTECTION
     stk->hash_value++;
@@ -177,6 +178,7 @@ Error_t StackPush (Stack* const stk, const Elem_t value)
         stk->hash_value += (Hash_t) *(hash_ptr + i);
     }
 
+    stk->hash_value--;
     StackHashError (stk);
 #endif
 

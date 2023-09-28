@@ -1,5 +1,5 @@
-#include "stack.h"
-#include "errors.h"
+#include "headers/stack.h"
+#include "headers/errors.h"
 
 static void CleanLogFile (const char* const log_file_name)
 {
