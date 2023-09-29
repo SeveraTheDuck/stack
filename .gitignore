@@ -1,0 +1,7 @@
+object/
+.DS_Store
+makefile
+run
+.vscode/
+html/
+index.html
