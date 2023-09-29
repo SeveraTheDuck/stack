@@ -11,12 +11,12 @@ Error_t StackIsAnyError   (ErrorType* stack_err);
 Error_t StackVerify       (Stack* stk);
 
 void StackDump            (Stack* stk, const char* file_name,
-                                      const int line,
-                                      const char* func_name);
+                                       const int line,
+                                       const char* func_name);
 
 void StackDumpHeader      (Stack* stk, const char* file_name,
-                                      const int line,
-                                      const char* func_name);
+                                       const int line,
+                                       const char* func_name);
 
 void StackDumpInfo        (Stack* stk);
 

@@ -7,6 +7,7 @@
 
 #include "config.h"
 #include "const.h"
+#include "errors.h"
 
 #define STACK_CTOR(stk) StackCtor ((stk), #stk,\
                                     __LINE__, __FILE__, __func__)
@@ -15,14 +16,16 @@
                                                         __LINE__, __FILE__, __func__,\
                                                         stack_capacity)
 
-#define STACKDUMP(stk) StackDump (stk, __FILE__, __LINE__, __func__)
+#define STACK_DTOR(stk) StackDtor (stk);
 
-#define STACKVERIFY(stk)\
+#define STACK_DUMP(stk) StackDump (stk, __FILE__, __LINE__, __func__)
+
+#define STACK_VERIFY(stk)\
     assert (stk);\
     (stk)->stack_err.STACK_ERROR_OCCURED = StackVerify (stk);\
     if ((stk)->stack_err.STACK_ERROR_OCCURED)\
     {\
-        STACKDUMP(stk);\
+        STACK_DUMP(stk);\
         return (stk)->stack_err.STACK_ERROR_OCCURED;\
     }
 
