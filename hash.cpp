@@ -55,7 +55,7 @@ ErrorType StackDataFindHash (Stack*  const stk,
 
     #ifdef CANARY_PROTECTION
         char*  left_canary_ptr = (ptr - sizeof(Canary_t));
-        char* right_canary_ptr = (ptr + stk->data_capacity * sizeof (Elem_t));
+        char* right_canary_ptr = (ptr - sizeof(Canary_t));
         HashIncrease (left_canary_ptr,  hash_ptr, 0, sizeof (Canary_t));
         HashIncrease (right_canary_ptr, hash_ptr, 0, sizeof (Canary_t));
     #endif

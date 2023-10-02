@@ -75,9 +75,9 @@ struct Stack
         Canary_t left_canary;
     #endif
 
-    Elem_t*     data;
-    size_t      data_size;
-    size_t      data_capacity;
+    Elem_t* data;
+    size_t  data_size;
+    size_t  data_capacity;
 
     #ifdef _DEBUG
         size_t      init_line;
