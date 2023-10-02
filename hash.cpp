@@ -3,65 +3,80 @@
 
 #ifdef HASH_PROTECTION
 
-Hash_t StackFindHash (Stack* stk)
+void HashIncrease (char* ptr, Hash_t* hash_ptr,
+                 size_t begin_index, size_t border_index)
 {
-    assert      (stk);
+    for (size_t i = begin_index; i < border_index ; ++i)
+    {
+        *hash_ptr += (Hash_t) *(ptr + i);
+    }
+}
+
+void HashDecrease (char* ptr, Hash_t* hash_ptr,
+                   size_t begin_index, size_t border_index)
+{
+    for (size_t i = begin_index; i < border_index ; ++i)
+    {
+        *hash_ptr -= (Hash_t) *(ptr + i);
+    }
+}
+
+ErrorType StackFindHash (Stack*  const stk,
+                         Hash_t* const hash_ptr)
+{
     STACK_VERIFY (stk);
 
     char* ptr = (char*) stk;
-    Hash_t hash = 0;
+    *hash_ptr = 0;
     size_t begin  = 0;
-    size_t border =  sizeof (Stack) - sizeof (Hash_t);
+    size_t border = sizeof (Stack) - sizeof (Hash_t);
 
     #ifdef CANARY_PROTECTION
         begin  += sizeof (Canary_t);
         border -= sizeof (Canary_t);
     #endif
 
-    for (size_t i = begin; i < border ; ++i)
-    {
-        hash += (Hash_t) *(ptr + i);
-    }
+    HashIncrease (ptr, hash_ptr, begin, border);
 
     #ifdef CANARY_PROTECTION
         size_t canary_begin  = sizeof (Stack) - sizeof (Canary_t);
         size_t canary_border = sizeof (Stack);
-        for (size_t i = canary_begin; i < canary_border; ++i)
-        {
-            hash += (Hash_t) *(ptr + i);
-        }
+        HashIncrease (ptr, hash_ptr, canary_begin, canary_border);
     #endif
 
-    ptr = (char*) stk->data;
-    for (size_t i = 0; i < stk->data_capacity * sizeof (Elem_t); ++i)
-    {
-        hash += (Hash_t) *(ptr + i);
-    }
+    return stk->stack_err;
+}
+
+ErrorType StackDataFindHash (Stack*  const stk,
+                             Hash_t* const hash_ptr)
+{
+    char* ptr = (char*) stk->data;
+    HashIncrease (ptr, hash_ptr, 0, stk->data_capacity * sizeof (Elem_t));
 
     #ifdef CANARY_PROTECTION
         char*  left_canary_ptr = (ptr - sizeof(Canary_t));
         char* right_canary_ptr = (ptr + stk->data_capacity * sizeof (Elem_t));
-        for (size_t i = 0; i < sizeof (Canary_t); ++i)
-        {
-            hash += (Hash_t) *(left_canary_ptr  + i);
-            hash += (Hash_t) *(right_canary_ptr + i);
-        }
+        HashIncrease (left_canary_ptr,  hash_ptr, 0, sizeof (Canary_t));
+        HashIncrease (right_canary_ptr, hash_ptr, 0, sizeof (Canary_t));
     #endif
 
-    return hash;
+    return stk->stack_err;
 }
 
-Error_t StackHashError (Stack* stk)
+ErrorType StackHashError (Stack* const stk)
 {
     assert (stk);
 
-    Hash_t new_hash_value = StackFindHash (stk);
+    Hash_t new_hash_value = 0;
+    StackFindHash     (stk, &new_hash_value);
+    StackDataFindHash (stk, &new_hash_value);
+
     if (stk->hash_value != new_hash_value)
     {
         stk->stack_err.STACK_HASH_DAMAGED = 1;
     }
 
-    return stk->stack_err.STACK_HASH_DAMAGED;
+    return stk->stack_err;
 }
 
 #endif

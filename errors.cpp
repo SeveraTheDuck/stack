@@ -1,49 +1,37 @@
 #include "headers/stack.h"
 #include "headers/errors.h"
 
-static void CleanLogFile (const char* const output_file);
+/// @brief This function clears log file.
+/// Log file name must be declared in config.h file.
+__attribute__ ((constructor))
+static void CleanLogFile ();
 
-__attribute__((format(printf, 2, 3)))
+/// @brief This is a wrapper for fprintf.
+/// It can print both in log file (always) and stderr stream (only in debug mode).
+__attribute__ ((format(printf, 2, 3)))
 static void PrintLog (const char* const output_file,
                       const char* const fmt, ...);
 
-Error_t StackDataPtrError (Stack* stk)
+Error_t StackDataPtrError (Stack* const stk)
 {
     assert(stk);
 
     if (!stk->data)
     {
         PrintLog (log_file_name, "STACK_DATA_NULL_POINTER\n");
-        stk->stack_err.STACK_ERROR_OCCURED = 1;
+        stk->stack_err.STACK_ERROR_OCCURED     = 1;
         stk->stack_err.STACK_DATA_NULL_POINTER = 1;
-        return stk->stack_err.STACK_ERROR_OCCURED;
+        return stk->stack_err.STACK_DATA_NULL_POINTER;
     }
 
     return 0;
 }
 
-Error_t StackIsAnyError (ErrorType* stack_err)
+Error_t StackIsAnyError (ErrorType* const stack_err)
 {
     assert(stack_err);
 
-    if (stack_err->STACK_DATA_NULL_POINTER         ||
-        stack_err->STACK_SIZE_NOT_LEGIT_VALUE      ||
-        stack_err->STACK_CAPACITY_NOT_LEGIT_VALUE  ||
-        stack_err->STACK_SIZE_OUT_OF_RANGE
-
-    #ifdef CANARY_PROTECTION
-                                                       ||
-            stack_err->STACK_LEFT_CANARY_DAMAGED       ||
-            stack_err->STACK_RIGHT_CANARY_DAMAGED      ||
-            stack_err->STACK_DATA_LEFT_CANARY_DAMAGED  ||
-            stack_err->STACK_DATA_RIGHT_CANARY_DAMAGED
-    #endif
-
-    #ifdef HASH_PROTECTION
-                                                   ||
-            stack_err->STACK_HASH_DAMAGED
-    #endif
-                                                    )
+    if (*(Error_t*) stack_err)
     {
         stack_err->STACK_ERROR_OCCURED = 1;
     }
@@ -100,42 +88,49 @@ Error_t StackVerify (Stack* const stk)
     return StackIsAnyError (&stk->stack_err);
 }
 
-void StackDump (Stack* const stk, const char* file_name,
-                                  const int   line,
-                                  const char* func_name)
+void StackDump (const Stack* const stk
+                #ifdef _DEBUG
+                  , STACK_DUMP_RECIEVE_INFO
+                #endif
+               )
 {
-    assert(stk);
-    assert(file_name);
-    assert(line);
-    assert(func_name);
+    assert (stk);
+    #ifdef _DEBUG
+        assert(file_name);
+        assert(func_name);
+    #endif
 
-    StackDumpHeader (stk, file_name, line, func_name);
+    #ifdef _DEBUG
+        StackDumpHeader (stk, line, file_name, func_name);
+        PrintLog (log_file_name, "{\n");
+    #endif
 
-    PrintLog (log_file_name, "{\n");
-
-    StackDumpInfo   (stk);
+    StackDumpInfo (stk);
 
     #ifdef CANARY_PROTECTION
         StackDumpCanary (stk);
     #endif
 
     #ifdef HASH_PROTECTION
-        StackDumpHash   (stk);
+        StackDumpHash (stk);
     #endif
 
-    PrintLog (log_file_name, "}\n");
+    #ifdef _DEBUG
+        PrintLog (log_file_name, "}\n");
+    #endif
 
     StackErrorOutput (&stk->stack_err);
 }
 
-void StackDumpHeader (Stack* const stk, const char* file_name,
-                                        const int   line,
-                                        const char* func_name)
+#ifdef _DEBUG
+void StackDumpHeader (const Stack* const stk,
+                      STACK_DUMP_RECIEVE_INFO)
 {
     assert(stk);
-    assert(file_name);
-    assert(line);
-    assert(func_name);
+    #ifdef _DEBUG
+        assert(file_name);
+        assert(func_name);
+    #endif
 
     PrintLog (log_file_name, "Stack [%p] \"%s\" \n       from %s(%zd) %s()\n",
                                                            stk, stk->init_name,
@@ -144,8 +139,9 @@ void StackDumpHeader (Stack* const stk, const char* file_name,
                                                            stk->init_func);
     PrintLog (log_file_name, "called from %s(%d) %s()\n", file_name, line, func_name);
 }
+#endif
 
-void StackDumpInfo (Stack* const stk)
+void StackDumpInfo (const Stack* const stk)
 {
     assert(stk);
 
@@ -164,7 +160,7 @@ void StackDumpInfo (Stack* const stk)
     PrintLog (log_file_name, "\t}\n");
 }
 
-void StackDumpData (Stack* const stk)
+void StackDumpData (const Stack* const stk)
 {
     assert(stk);
 
@@ -175,7 +171,7 @@ void StackDumpData (Stack* const stk)
         {
             if (stk->data[i] == POISON)
             {
-                PrintLog (log_file_name, "\t\t[%zd] = " OUTPUT_F " (POISON)\n", i, stk->data[i]);
+                PrintLog (log_file_name, "\t\t [%zd] = " OUTPUT_F " (POISON)\n", i, stk->data[i]);
             }
             else if ((long long) i < (long long) stk->data_size) // explicit cast is used for case data_size < 0
             {
@@ -203,7 +199,7 @@ void StackDumpData (Stack* const stk)
 }
 
 #ifdef CANARY_PROTECTION
-void StackDumpCanary (Stack* const stk)
+void StackDumpCanary (const Stack* const stk)
 {
     assert(stk);
 
@@ -246,14 +242,14 @@ void StackDumpCanary (Stack* const stk)
 #endif
 
 #ifdef HASH_PROTECTION
-void StackDumpHash (Stack* const stk)
+void StackDumpHash (const Stack* const stk)
 {
     PrintLog (log_file_name, "hash_value = %llu\n", stk->hash_value);
 }
 #endif
 
 //hex
-void StackErrorOutput (ErrorType* const stack_err)
+void StackErrorOutput (const ErrorType* const stack_err)
 {
     assert(stack_err);
 
@@ -302,36 +298,31 @@ void StackErrorOutput (ErrorType* const stack_err)
     PrintLog (log_file_name, "\n");
 }
 
-static void CleanLogFile (const char* const output_file)
+__attribute__ ((constructor))
+static void CleanLogFile ()
 {
-    assert(output_file);
-
-    static bool is_cleaned = false;
-    if (is_cleaned == true)
-    {
-        return;
-    }
-    FILE*   fp = fopen (output_file, "wb");
+    FILE*   fp = fopen (log_file_name, "wb");
     fclose (fp);
-    is_cleaned = true;
 }
 
-__attribute__((format(printf, 2, 3)))
+__attribute__ ((format(printf, 2, 3)))
 static void PrintLog (const char* const output_file,
                       const char* const fmt, ...)
 {
-    assert(output_file);
-    assert(fmt);
+    assert (output_file);
+    assert (fmt);
 
-    CleanLogFile     (output_file);
     FILE* fp = fopen (output_file, "a");
 
     va_list args = {};
 
     va_start (args, fmt);
 
-    vfprintf (stderr, fmt, args);
-    vfprintf (fp, fmt, args);
+    #ifdef _DEBUG
+        vfprintf (stderr, fmt, args);
+    #endif
+
+    vfprintf (fp,     fmt, args);
 
     va_end   (args);
     fclose   (fp);

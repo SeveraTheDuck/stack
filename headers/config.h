@@ -1,5 +1,5 @@
-#ifndef __CONFIG_H__
-#define __CONFIG_H__
+#ifndef CONFIG_H
+#define CONFIG_H
 
 /// @brief This typedef defines type for elements of stack. Change it to the type you like.
 typedef int Elem_t;
@@ -10,6 +10,10 @@ const Elem_t POISON = -31415926;
 
 /// @brief This define is for output specificator of Elem_t.
 #define OUTPUT_F "%d"
+
+/// @brief This define is for debug regime.
+/// It provides more complex output for STACK_DUMP() and more information in stack struct.
+#define _DEBUG
 
 /// @brief This define enables canary protection.
 /// Undefine or comment the string below to switch 'em off.

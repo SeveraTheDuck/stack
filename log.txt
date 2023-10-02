@@ -1,26 +1,26 @@
-Stack [0x16b78b270] "&stk" 
+Stack [0x16d733270] "&stk" 
        from main.cpp(7) main()
-called from main.cpp(15) main()
+called from main.cpp(24) main()
 {
-	size     = 5
+	size     = 4
 	capacity = 8
 
-	data[0x15b6069b8]
+	data[0x14ce069b8]
 	{
 		*[0] = 10
 		*[1] = 20
 		*[2] = 30
 		*[3] = 40
-		*[4] = 50
-		[5] = -31415926 (POISON)
-		[6] = -31415926 (POISON)
-		[7] = -31415926 (POISON)
+		 [4] = -31415926 (POISON)
+		 [5] = -31415926 (POISON)
+		 [6] = -31415926 (POISON)
+		 [7] = -31415926 (POISON)
 	}
 left_stack_canary  = 31415926 (STANDART VALUE)
 right_stack_canary = 31415926 (STANDART VALUE)
 left_data_canary   = 31415926 (STANDART VALUE)
 right_data_canary  = 31415926 (STANDART VALUE)
-hash_value = 830
+hash_value = 39
 }
 
 No errors occured
