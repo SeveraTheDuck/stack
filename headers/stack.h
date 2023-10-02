@@ -1,3 +1,22 @@
+/**
+* @mainpage My Stack Documentation
+* This is my version of stack library. It includes different protection options,
+* conditional compilation, config and log files. \n
+* \n
+* The product is in progress. The goals are: \n
+* 1. Better doxygen. \n
+* 2. Different types of stack supported at once. \n
+* \n
+* What is done: \n
+* 1. Convenient config file - you can enable and disable canary and hash protection, debug mode and switch types of stack data. \n
+* 2. Log file is also should be declared in config file, so you could see your mistakes while working. \n
+* 3. Standart pop and push functions. \n
+* \n
+* For more information read docs for each function!
+*/
+
+
+
 #ifndef STACK_H
 #define STACK_H
 
