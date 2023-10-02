@@ -79,10 +79,12 @@ $(function() {
 <p>This is the main struct with stack. It contains stack data, its size and capacity, its initial info, struct with errors, canaries and hash.  
  <a href="struct_stack.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="const_8h_source.html">const.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="stack_8h_source.html">stack.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
+<tr class="memitem:a6d58d30e6198bfdae1506b4a057382d2"><td class="memItemLeft" align="right" valign="top">Canary_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_stack.html#a6d58d30e6198bfdae1506b4a057382d2">left_canary</a></td></tr>
+<tr class="separator:a6d58d30e6198bfdae1506b4a057382d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a02ed96691b2e6636bd9155758e8ee8cd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="config_8h.html#a080be3bdb852e7fe4ae09e67e3f7012c">Elem_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_stack.html#a02ed96691b2e6636bd9155758e8ee8cd">data</a></td></tr>
 <tr class="separator:a02ed96691b2e6636bd9155758e8ee8cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a26a9a73d398e766aee9767160e0ba110"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_stack.html#a26a9a73d398e766aee9767160e0ba110">data_size</a></td></tr>
@@ -99,6 +101,12 @@ Public Attributes</h2></td></tr>
 <tr class="separator:ab234bfceb8dc921e91dbf8d9776ecc04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15a88ed6d02f8385eae6f306855ab580"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_error_type.html">ErrorType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_stack.html#a15a88ed6d02f8385eae6f306855ab580">stack_err</a></td></tr>
 <tr class="separator:a15a88ed6d02f8385eae6f306855ab580"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57558aa326ccfbab383afb8d27a672c5"><td class="memItemLeft" align="right" valign="top">Hash_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_stack.html#a57558aa326ccfbab383afb8d27a672c5">hash_value</a></td></tr>
+<tr class="memdesc:a57558aa326ccfbab383afb8d27a672c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Don't move this hash, it must be in the end but before right canary.  <br /></td></tr>
+<tr class="separator:a57558aa326ccfbab383afb8d27a672c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0258a52fb9f670dee4ffb625cd5e769e"><td class="memItemLeft" align="right" valign="top">Canary_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_stack.html#a0258a52fb9f670dee4ffb625cd5e769e">right_canary</a></td></tr>
+<tr class="memdesc:a0258a52fb9f670dee4ffb625cd5e769e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Don't move this canary, it must be in the end.  <br /></td></tr>
+<tr class="separator:a0258a52fb9f670dee4ffb625cd5e769e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This is the main struct with stack. It contains stack data, its size and capacity, its initial info, struct with errors, canaries and hash. </p>
@@ -142,6 +150,22 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a57558aa326ccfbab383afb8d27a672c5" name="a57558aa326ccfbab383afb8d27a672c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57558aa326ccfbab383afb8d27a672c5">&#9670;&#160;</a></span>hash_value</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Hash_t Stack::hash_value</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Don't move this hash, it must be in the end but before right canary. </p>
 
 </div>
 </div>
@@ -201,6 +225,36 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a id="a6d58d30e6198bfdae1506b4a057382d2" name="a6d58d30e6198bfdae1506b4a057382d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6d58d30e6198bfdae1506b4a057382d2">&#9670;&#160;</a></span>left_canary</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Canary_t Stack::left_canary</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0258a52fb9f670dee4ffb625cd5e769e" name="a0258a52fb9f670dee4ffb625cd5e769e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0258a52fb9f670dee4ffb625cd5e769e">&#9670;&#160;</a></span>right_canary</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Canary_t Stack::right_canary</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Don't move this canary, it must be in the end. </p>
+
+</div>
+</div>
 <a id="a15a88ed6d02f8385eae6f306855ab580" name="a15a88ed6d02f8385eae6f306855ab580"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a15a88ed6d02f8385eae6f306855ab580">&#9670;&#160;</a></span>stack_err</h2>
 
@@ -216,7 +270,7 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>headers/<a class="el" href="const_8h_source.html">const.h</a></li>
+<li>headers/<a class="el" href="stack_8h_source.html">stack.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

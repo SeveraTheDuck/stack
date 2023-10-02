@@ -80,32 +80,40 @@ $(function() {
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:aa64681db64f762e4081a0481c2bc8fa4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="errors_8cpp.html#aa64681db64f762e4081a0481c2bc8fa4">__attribute__</a> ((constructor)) static void CleanLogFile()</td></tr>
+<tr class="memdesc:aa64681db64f762e4081a0481c2bc8fa4"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function clears log file. Log file name must be declared in <a class="el" href="config_8h.html">config.h</a> file.  <br /></td></tr>
+<tr class="separator:aa64681db64f762e4081a0481c2bc8fa4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd1d2b305f926cdcf909e8371519af37"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="errors_8cpp.html#acd1d2b305f926cdcf909e8371519af37">__attribute__</a> ((format(printf, 2, 3))) static void PrintLog(const char *const output_file</td></tr>
+<tr class="memdesc:acd1d2b305f926cdcf909e8371519af37"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is a wrapper for fprintf. It can print both in log file (always) and stderr stream (only in debug mode).  <br /></td></tr>
 <tr class="separator:acd1d2b305f926cdcf909e8371519af37"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7630cad7ef2a8902742820362bc2718c"><td class="memItemLeft" align="right" valign="top">const char *const <a class="el" href="const_8h.html#a684a63da8088b0451444dda543e91bf1">Error_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="errors_8cpp.html#a7630cad7ef2a8902742820362bc2718c">StackDataPtrError</a> (<a class="el" href="struct_stack.html">Stack</a> *stk)</td></tr>
-<tr class="separator:a7630cad7ef2a8902742820362bc2718c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca6f8ac79268c445fc9198313cf407a9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="const_8h.html#a684a63da8088b0451444dda543e91bf1">Error_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="errors_8cpp.html#aca6f8ac79268c445fc9198313cf407a9">StackIsAnyError</a> (<a class="el" href="struct_error_type.html">ErrorType</a> *stack_err)</td></tr>
-<tr class="separator:aca6f8ac79268c445fc9198313cf407a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b0205927ac4cb77ff9cd08f817c8863"><td class="memItemLeft" align="right" valign="top"><a class="el" href="const_8h.html#a684a63da8088b0451444dda543e91bf1">Error_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="errors_8cpp.html#a5b0205927ac4cb77ff9cd08f817c8863">StackVerify</a> (<a class="el" href="struct_stack.html">Stack</a> *const stk)</td></tr>
+<tr class="memitem:a02dd38fc36d482ae829e932cd58f7910"><td class="memItemLeft" align="right" valign="top">const char *const <a class="el" href="const_8h.html#a6ad5b66fab668f291071ea909c6b91b6">Error_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="errors_8cpp.html#a02dd38fc36d482ae829e932cd58f7910">StackDataPtrError</a> (<a class="el" href="struct_stack.html">Stack</a> *const stk)</td></tr>
+<tr class="memdesc:a02dd38fc36d482ae829e932cd58f7910"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function checks if pointer to stack data is nullptr.  <br /></td></tr>
+<tr class="separator:a02dd38fc36d482ae829e932cd58f7910"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0eb26e9a52248f442496e5c3c1cc73d2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="const_8h.html#a6ad5b66fab668f291071ea909c6b91b6">Error_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="errors_8cpp.html#a0eb26e9a52248f442496e5c3c1cc73d2">StackIsAnyError</a> (<a class="el" href="struct_error_type.html">ErrorType</a> *const stack_err)</td></tr>
+<tr class="memdesc:a0eb26e9a52248f442496e5c3c1cc73d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function checks if there were any errors by far.  <br /></td></tr>
+<tr class="separator:a0eb26e9a52248f442496e5c3c1cc73d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b0205927ac4cb77ff9cd08f817c8863"><td class="memItemLeft" align="right" valign="top"><a class="el" href="const_8h.html#a6ad5b66fab668f291071ea909c6b91b6">Error_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="errors_8cpp.html#a5b0205927ac4cb77ff9cd08f817c8863">StackVerify</a> (<a class="el" href="struct_stack.html">Stack</a> *const stk)</td></tr>
+<tr class="memdesc:a5b0205927ac4cb77ff9cd08f817c8863"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is a verificator for stack. It checks whether it is legit or not.  <br /></td></tr>
 <tr class="separator:a5b0205927ac4cb77ff9cd08f817c8863"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ad98a512dbcc47eb122e3de76d22a5a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="errors_8cpp.html#a4ad98a512dbcc47eb122e3de76d22a5a">StackDump</a> (<a class="el" href="struct_stack.html">Stack</a> *const stk, const char *file_name, const int line, const char *func_name)</td></tr>
-<tr class="separator:a4ad98a512dbcc47eb122e3de76d22a5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a92a272528a304d25565391b95e2eeca9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="errors_8cpp.html#a92a272528a304d25565391b95e2eeca9">StackDumpHeader</a> (<a class="el" href="struct_stack.html">Stack</a> *const stk, const char *file_name, const int line, const char *func_name)</td></tr>
-<tr class="separator:a92a272528a304d25565391b95e2eeca9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0fd68d61efbdf6eaf167c0fc31075059"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="errors_8cpp.html#a0fd68d61efbdf6eaf167c0fc31075059">StackDumpInfo</a> (<a class="el" href="struct_stack.html">Stack</a> *const stk)</td></tr>
-<tr class="separator:a0fd68d61efbdf6eaf167c0fc31075059"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5568051c8598c6b0edd2867c6b3ba33b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="errors_8cpp.html#a5568051c8598c6b0edd2867c6b3ba33b">StackDumpData</a> (<a class="el" href="struct_stack.html">Stack</a> *const stk)</td></tr>
-<tr class="separator:a5568051c8598c6b0edd2867c6b3ba33b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acfb52e5f28f79d95694d874febf37088"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="errors_8cpp.html#acfb52e5f28f79d95694d874febf37088">StackDumpCanary</a> (<a class="el" href="struct_stack.html">Stack</a> *const stk)</td></tr>
-<tr class="separator:acfb52e5f28f79d95694d874febf37088"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2bfb785665672818665d5be126c58467"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="errors_8cpp.html#a2bfb785665672818665d5be126c58467">StackDumpHash</a> (<a class="el" href="struct_stack.html">Stack</a> *const stk)</td></tr>
-<tr class="separator:a2bfb785665672818665d5be126c58467"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a29b1b641824df54b5fa1e020dc149375"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="errors_8cpp.html#a29b1b641824df54b5fa1e020dc149375">StackErrorOutput</a> (<a class="el" href="struct_error_type.html">ErrorType</a> *const stack_err)</td></tr>
-<tr class="separator:a29b1b641824df54b5fa1e020dc149375"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2eb82cf7396927921e489c70299790fc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="errors_8cpp.html#a2eb82cf7396927921e489c70299790fc">StackDump</a> (const <a class="el" href="struct_stack.html">Stack</a> *const stk, STACK_DUMP_RECIEVE_INFO)</td></tr>
+<tr class="separator:a2eb82cf7396927921e489c70299790fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af534414085022b134c7873ab3398d144"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="errors_8cpp.html#af534414085022b134c7873ab3398d144">StackDumpHeader</a> (const <a class="el" href="struct_stack.html">Stack</a> *const stk, STACK_DUMP_RECIEVE_INFO)</td></tr>
+<tr class="separator:af534414085022b134c7873ab3398d144"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05a73033850acdacf49410d6ee621d46"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="errors_8cpp.html#a05a73033850acdacf49410d6ee621d46">StackDumpInfo</a> (const <a class="el" href="struct_stack.html">Stack</a> *const stk)</td></tr>
+<tr class="memdesc:a05a73033850acdacf49410d6ee621d46"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function prints size and capacity of stack.  <br /></td></tr>
+<tr class="separator:a05a73033850acdacf49410d6ee621d46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea09884b6d49e7cf82d7ad2c458c7e61"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="errors_8cpp.html#aea09884b6d49e7cf82d7ad2c458c7e61">StackDumpData</a> (const <a class="el" href="struct_stack.html">Stack</a> *const stk)</td></tr>
+<tr class="memdesc:aea09884b6d49e7cf82d7ad2c458c7e61"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function prints data of stack.  <br /></td></tr>
+<tr class="separator:aea09884b6d49e7cf82d7ad2c458c7e61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35d4bfb424e234c80f5701de6b993918"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="errors_8cpp.html#a35d4bfb424e234c80f5701de6b993918">StackDumpCanary</a> (const <a class="el" href="struct_stack.html">Stack</a> *const stk)</td></tr>
+<tr class="separator:a35d4bfb424e234c80f5701de6b993918"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab734f8e5fdbb7f27c3438b0bd4ee34ee"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="errors_8cpp.html#ab734f8e5fdbb7f27c3438b0bd4ee34ee">StackDumpHash</a> (const <a class="el" href="struct_stack.html">Stack</a> *const stk)</td></tr>
+<tr class="separator:ab734f8e5fdbb7f27c3438b0bd4ee34ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f64d38c7f89f4b93b79c027f06b435b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="errors_8cpp.html#a0f64d38c7f89f4b93b79c027f06b435b">StackErrorOutput</a> (const <a class="el" href="struct_error_type.html">ErrorType</a> *const stack_err)</td></tr>
+<tr class="memdesc:a0f64d38c7f89f4b93b79c027f06b435b"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function prints errors occured in stack.  <br /></td></tr>
+<tr class="separator:a0f64d38c7f89f4b93b79c027f06b435b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2d7ae8160255454c8e8d578ea24d2769"><td class="memItemLeft" align="right" valign="top">const char *const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="errors_8cpp.html#a2d7ae8160255454c8e8d578ea24d2769">assert</a> (<a class="el" href="errors_8cpp.html#a4e0a37eee292b7ddef2a732519a84798">fmt</a>)</td></tr>
 <tr class="separator:a2d7ae8160255454c8e8d578ea24d2769"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a24f5d6344bcba62b8729ee383c6fe449"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="errors_8cpp.html#a24f5d6344bcba62b8729ee383c6fe449">CleanLogFile</a> (output_file)</td></tr>
-<tr class="separator:a24f5d6344bcba62b8729ee383c6fe449"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aecf9a9be8105efb1454cd8c1ef6cb1c5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="errors_8cpp.html#aecf9a9be8105efb1454cd8c1ef6cb1c5">va_start</a> (<a class="el" href="errors_8cpp.html#aaccd55b82ca2bc0f01757348bc7a2afa">args</a>, <a class="el" href="errors_8cpp.html#a4e0a37eee292b7ddef2a732519a84798">fmt</a>)</td></tr>
 <tr class="separator:aecf9a9be8105efb1454cd8c1ef6cb1c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a883f70ea2ef453826c529690ee54d388"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="errors_8cpp.html#a883f70ea2ef453826c529690ee54d388">vfprintf</a> (stderr, <a class="el" href="errors_8cpp.html#a4e0a37eee292b7ddef2a732519a84798">fmt</a>, <a class="el" href="errors_8cpp.html#aaccd55b82ca2bc0f01757348bc7a2afa">args</a>)</td></tr>
@@ -127,8 +135,28 @@ Variables</h2></td></tr>
 <tr class="separator:aaccd55b82ca2bc0f01757348bc7a2afa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="aa64681db64f762e4081a0481c2bc8fa4" name="aa64681db64f762e4081a0481c2bc8fa4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa64681db64f762e4081a0481c2bc8fa4">&#9670;&#160;</a></span>__attribute__() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">__attribute__ </td>
+          <td>(</td>
+          <td class="paramtype">(constructor)&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This function clears log file. Log file name must be declared in <a class="el" href="config_8h.html">config.h</a> file. </p>
+
+</div>
+</div>
 <a id="acd1d2b305f926cdcf909e8371519af37" name="acd1d2b305f926cdcf909e8371519af37"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acd1d2b305f926cdcf909e8371519af37">&#9670;&#160;</a></span>__attribute__()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#acd1d2b305f926cdcf909e8371519af37">&#9670;&#160;</a></span>__attribute__() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -143,6 +171,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>This is a wrapper for fprintf. It can print both in log file (always) and stderr stream (only in debug mode). </p>
+
 </div>
 </div>
 <a id="a2d7ae8160255454c8e8d578ea24d2769" name="a2d7ae8160255454c8e8d578ea24d2769"></a>
@@ -155,24 +185,6 @@ Variables</h2></td></tr>
           <td class="memname">const char *const assert </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="errors_8cpp.html#a4e0a37eee292b7ddef2a732519a84798">fmt</a>&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a24f5d6344bcba62b8729ee383c6fe449" name="a24f5d6344bcba62b8729ee383c6fe449"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a24f5d6344bcba62b8729ee383c6fe449">&#9670;&#160;</a></span>CleanLogFile()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">CleanLogFile </td>
-          <td>(</td>
-          <td class="paramtype">output_file&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
@@ -199,26 +211,35 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a7630cad7ef2a8902742820362bc2718c" name="a7630cad7ef2a8902742820362bc2718c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7630cad7ef2a8902742820362bc2718c">&#9670;&#160;</a></span>StackDataPtrError()</h2>
+<a id="a02dd38fc36d482ae829e932cd58f7910" name="a02dd38fc36d482ae829e932cd58f7910"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02dd38fc36d482ae829e932cd58f7910">&#9670;&#160;</a></span>StackDataPtrError()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const char *const <a class="el" href="const_8h.html#a684a63da8088b0451444dda543e91bf1">Error_t</a> StackDataPtrError </td>
+          <td class="memname">const char *const <a class="el" href="const_8h.html#a6ad5b66fab668f291071ea909c6b91b6">Error_t</a> StackDataPtrError </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_stack.html">Stack</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="struct_stack.html">Stack</a> *const&#160;</td>
           <td class="paramname"><em>stk</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
+<p>This function checks if pointer to stack data is nullptr. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stk</td><td>Pointer to stack. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>If data is nullptr, return STACK_DATA_NULL_POINTER, else return 0. </dd></dl>
+
 </div>
 </div>
-<a id="a4ad98a512dbcc47eb122e3de76d22a5a" name="a4ad98a512dbcc47eb122e3de76d22a5a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4ad98a512dbcc47eb122e3de76d22a5a">&#9670;&#160;</a></span>StackDump()</h2>
+<a id="a2eb82cf7396927921e489c70299790fc" name="a2eb82cf7396927921e489c70299790fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2eb82cf7396927921e489c70299790fc">&#9670;&#160;</a></span>StackDump()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -226,26 +247,14 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void StackDump </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_stack.html">Stack</a> *const&#160;</td>
+          <td class="paramtype">const <a class="el" href="struct_stack.html">Stack</a> *const&#160;</td>
           <td class="paramname"><em>stk</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>file_name</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const int&#160;</td>
-          <td class="paramname"><em>line</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>func_name</em>&#160;</td>
+          <td class="paramtype">STACK_DUMP_RECIEVE_INFO&#160;</td>
+          <td class="paramname">&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -257,8 +266,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="acfb52e5f28f79d95694d874febf37088" name="acfb52e5f28f79d95694d874febf37088"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acfb52e5f28f79d95694d874febf37088">&#9670;&#160;</a></span>StackDumpCanary()</h2>
+<a id="a35d4bfb424e234c80f5701de6b993918" name="a35d4bfb424e234c80f5701de6b993918"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35d4bfb424e234c80f5701de6b993918">&#9670;&#160;</a></span>StackDumpCanary()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -266,7 +275,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void StackDumpCanary </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_stack.html">Stack</a> *const&#160;</td>
+          <td class="paramtype">const <a class="el" href="struct_stack.html">Stack</a> *const&#160;</td>
           <td class="paramname"><em>stk</em></td><td>)</td>
           <td></td>
         </tr>
@@ -275,8 +284,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a5568051c8598c6b0edd2867c6b3ba33b" name="a5568051c8598c6b0edd2867c6b3ba33b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5568051c8598c6b0edd2867c6b3ba33b">&#9670;&#160;</a></span>StackDumpData()</h2>
+<a id="aea09884b6d49e7cf82d7ad2c458c7e61" name="aea09884b6d49e7cf82d7ad2c458c7e61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea09884b6d49e7cf82d7ad2c458c7e61">&#9670;&#160;</a></span>StackDumpData()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -284,17 +293,25 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void StackDumpData </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_stack.html">Stack</a> *const&#160;</td>
+          <td class="paramtype">const <a class="el" href="struct_stack.html">Stack</a> *const&#160;</td>
           <td class="paramname"><em>stk</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
+<p>This function prints data of stack. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stk</td><td>Pointer to stack. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
-<a id="a2bfb785665672818665d5be126c58467" name="a2bfb785665672818665d5be126c58467"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2bfb785665672818665d5be126c58467">&#9670;&#160;</a></span>StackDumpHash()</h2>
+<a id="ab734f8e5fdbb7f27c3438b0bd4ee34ee" name="ab734f8e5fdbb7f27c3438b0bd4ee34ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab734f8e5fdbb7f27c3438b0bd4ee34ee">&#9670;&#160;</a></span>StackDumpHash()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -302,7 +319,7 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void StackDumpHash </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_stack.html">Stack</a> *const&#160;</td>
+          <td class="paramtype">const <a class="el" href="struct_stack.html">Stack</a> *const&#160;</td>
           <td class="paramname"><em>stk</em></td><td>)</td>
           <td></td>
         </tr>
@@ -311,8 +328,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a92a272528a304d25565391b95e2eeca9" name="a92a272528a304d25565391b95e2eeca9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a92a272528a304d25565391b95e2eeca9">&#9670;&#160;</a></span>StackDumpHeader()</h2>
+<a id="af534414085022b134c7873ab3398d144" name="af534414085022b134c7873ab3398d144"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af534414085022b134c7873ab3398d144">&#9670;&#160;</a></span>StackDumpHeader()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -320,26 +337,14 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void StackDumpHeader </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_stack.html">Stack</a> *const&#160;</td>
+          <td class="paramtype">const <a class="el" href="struct_stack.html">Stack</a> *const&#160;</td>
           <td class="paramname"><em>stk</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>file_name</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const int&#160;</td>
-          <td class="paramname"><em>line</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>func_name</em>&#160;</td>
+          <td class="paramtype">STACK_DUMP_RECIEVE_INFO&#160;</td>
+          <td class="paramname">&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -351,8 +356,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a0fd68d61efbdf6eaf167c0fc31075059" name="a0fd68d61efbdf6eaf167c0fc31075059"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0fd68d61efbdf6eaf167c0fc31075059">&#9670;&#160;</a></span>StackDumpInfo()</h2>
+<a id="a05a73033850acdacf49410d6ee621d46" name="a05a73033850acdacf49410d6ee621d46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05a73033850acdacf49410d6ee621d46">&#9670;&#160;</a></span>StackDumpInfo()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -360,23 +365,57 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void StackDumpInfo </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_stack.html">Stack</a> *const&#160;</td>
+          <td class="paramtype">const <a class="el" href="struct_stack.html">Stack</a> *const&#160;</td>
           <td class="paramname"><em>stk</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
+<p>This function prints size and capacity of stack. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stk</td><td>Pointer to stack. If data is not nullptr, calls for StackDumpData. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
-<a id="a29b1b641824df54b5fa1e020dc149375" name="a29b1b641824df54b5fa1e020dc149375"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a29b1b641824df54b5fa1e020dc149375">&#9670;&#160;</a></span>StackErrorOutput()</h2>
+<a id="a0f64d38c7f89f4b93b79c027f06b435b" name="a0f64d38c7f89f4b93b79c027f06b435b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f64d38c7f89f4b93b79c027f06b435b">&#9670;&#160;</a></span>StackErrorOutput()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void StackErrorOutput </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="struct_error_type.html">ErrorType</a> *const&#160;</td>
+          <td class="paramname"><em>stack_err</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This function prints errors occured in stack. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stk</td><td>Pointer to stack. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0eb26e9a52248f442496e5c3c1cc73d2" name="a0eb26e9a52248f442496e5c3c1cc73d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0eb26e9a52248f442496e5c3c1cc73d2">&#9670;&#160;</a></span>StackIsAnyError()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="const_8h.html#a6ad5b66fab668f291071ea909c6b91b6">Error_t</a> StackIsAnyError </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_error_type.html">ErrorType</a> *const&#160;</td>
           <td class="paramname"><em>stack_err</em></td><td>)</td>
@@ -385,23 +424,14 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-</div>
-</div>
-<a id="aca6f8ac79268c445fc9198313cf407a9" name="aca6f8ac79268c445fc9198313cf407a9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aca6f8ac79268c445fc9198313cf407a9">&#9670;&#160;</a></span>StackIsAnyError()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="const_8h.html#a684a63da8088b0451444dda543e91bf1">Error_t</a> StackIsAnyError </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_error_type.html">ErrorType</a> *&#160;</td>
-          <td class="paramname"><em>stack_err</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<p>This function checks if there were any errors by far. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stack_err</td><td>Struct with errors. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Value of STACK_ERROR_OCCURED. </dd></dl>
 
 </div>
 </div>
@@ -412,7 +442,7 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="const_8h.html#a684a63da8088b0451444dda543e91bf1">Error_t</a> StackVerify </td>
+          <td class="memname"><a class="el" href="const_8h.html#a6ad5b66fab668f291071ea909c6b91b6">Error_t</a> StackVerify </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_stack.html">Stack</a> *const&#160;</td>
           <td class="paramname"><em>stk</em></td><td>)</td>
@@ -420,6 +450,15 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>This is a verificator for stack. It checks whether it is legit or not. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stk</td><td>Pointer to stack. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Calls for <a class="el" href="errors_8h.html#a0eb26e9a52248f442496e5c3c1cc73d2" title="This function checks if there were any errors by far.">StackIsAnyError()</a> and returns its value. </dd></dl>
 
 </div>
 </div>

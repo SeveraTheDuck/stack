@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['cleanlogfile_0',['CleanLogFile',['../errors_8cpp.html#a24f5d6344bcba62b8729ee383c6fe449',1,'errors.cpp']]]
+  ['fclose_0',['fclose',['../errors_8cpp.html#a2145366fe9f5dc2f0b3373bf4bdd0763',1,'errors.cpp']]],
+  ['fillcanary_1',['FillCanary',['../stack_8h.html#a942c6dcbcf88d26e7c0b67374f959cb9',1,'FillCanary(Stack *const stk):&#160;stack.cpp'],['../stack_8cpp.html#a942c6dcbcf88d26e7c0b67374f959cb9',1,'FillCanary(Stack *const stk):&#160;stack.cpp']]]
 ];

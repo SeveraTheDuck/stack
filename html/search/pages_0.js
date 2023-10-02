@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['stack_0',['stack',['../md__r_e_a_d_m_e.html',1,'']]]
+  ['my_20stack_20documentation_0',['My Stack Documentation',['../index.html',1,'']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['canary_5fprotection_0',['CANARY_PROTECTION',['../config_8h.html#a95bd89ebb4367ab3b43b658ca2732fb7',1,'config.h']]]
+  ['_5fdebug_0',['_DEBUG',['../config_8h.html#a152fc5203b90b1cff03b7b78579b8f52',1,'config.h']]]
 ];

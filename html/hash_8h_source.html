@@ -76,8 +76,8 @@ $(function() {
   <div class="headertitle"><div class="title">hash.h</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="hash_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef __HASH_H__</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define __HASH_H__</span></div>
+<a href="hash_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef HASH_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define HASH_H</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="stack_8h.html">stack.h</a>&quot;</span></div>
@@ -85,19 +85,33 @@ $(function() {
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="const_8h.html">const.h</a>&quot;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#ifdef HASH_PROTECTION</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <a class="code hl_typedef" href="const_8h.html#a684a63da8088b0451444dda543e91bf1">Error_t</a> <a class="code hl_function" href="hash_8h.html#a2f048cfd49b14fd44a6b044e4fbf0051">StackFindHash</a>  (<a class="code hl_struct" href="struct_stack.html">Stack</a>* stk);</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <a class="code hl_typedef" href="const_8h.html#a684a63da8088b0451444dda543e91bf1">Error_t</a> <a class="code hl_function" href="hash_8h.html#a7d0a584827386ce3985d861dd7e25bce">StackHashError</a> (<a class="code hl_struct" href="struct_stack.html">Stack</a>* stk);</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="hash_8h.html#a53008fd46a9c6ccc2848643175bf5779">HashIncrease</a> (<span class="keywordtype">char</span>* ptr, Hash_t* hash_ptr,</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>                       <span class="keywordtype">size_t</span> begin_index, <span class="keywordtype">size_t</span> border_index);</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="hash_8h.html#a93b4363831915ba3085569e8a79d9281">HashDecrease</a> (<span class="keywordtype">char</span>* ptr, Hash_t* hash_ptr,</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>                       <span class="keywordtype">size_t</span> begin_index, <span class="keywordtype">size_t</span> border_index);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <a class="code hl_struct" href="struct_error_type.html">ErrorType</a> <a class="code hl_function" href="hash_8h.html#a3bdc3237003fd1c87bd90a8087f05ba4">StackFindHash</a>     (<a class="code hl_struct" href="struct_stack.html">Stack</a>*  <span class="keyword">const</span> stk,</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>                                 Hash_t* <span class="keyword">const</span> hash_ptr);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <a class="code hl_struct" href="struct_error_type.html">ErrorType</a> <a class="code hl_function" href="hash_8h.html#a2f66053685b3897a7a35279f57b87845">StackDataFindHash</a> (<a class="code hl_struct" href="struct_stack.html">Stack</a>*  <span class="keyword">const</span> stk,</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>                                 Hash_t* <span class="keyword">const</span> hash_ptr);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <a class="code hl_struct" href="struct_error_type.html">ErrorType</a> <a class="code hl_function" href="hash_8h.html#a1382486c465b991d376263d40c55c681">StackHashError</a> (<a class="code hl_struct" href="struct_stack.html">Stack</a>* <span class="keyword">const</span> stk);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aconst_8h_html"><div class="ttname"><a href="const_8h.html">const.h</a></div></div>
-<div class="ttc" id="aconst_8h_html_a684a63da8088b0451444dda543e91bf1"><div class="ttname"><a href="const_8h.html#a684a63da8088b0451444dda543e91bf1">Error_t</a></div><div class="ttdeci">unsigned long long Error_t</div><div class="ttdoc">This typedef is used to use, mark and return errors.</div><div class="ttdef"><b>Definition</b> const.h:5</div></div>
 <div class="ttc" id="aerrors_8h_html"><div class="ttname"><a href="errors_8h.html">errors.h</a></div></div>
-<div class="ttc" id="ahash_8h_html_a2f048cfd49b14fd44a6b044e4fbf0051"><div class="ttname"><a href="hash_8h.html#a2f048cfd49b14fd44a6b044e4fbf0051">StackFindHash</a></div><div class="ttdeci">Error_t StackFindHash(Stack *stk)</div><div class="ttdef"><b>Definition</b> hash.cpp:6</div></div>
-<div class="ttc" id="ahash_8h_html_a7d0a584827386ce3985d861dd7e25bce"><div class="ttname"><a href="hash_8h.html#a7d0a584827386ce3985d861dd7e25bce">StackHashError</a></div><div class="ttdeci">Error_t StackHashError(Stack *stk)</div><div class="ttdef"><b>Definition</b> hash.cpp:54</div></div>
+<div class="ttc" id="ahash_8h_html_a1382486c465b991d376263d40c55c681"><div class="ttname"><a href="hash_8h.html#a1382486c465b991d376263d40c55c681">StackHashError</a></div><div class="ttdeci">ErrorType StackHashError(Stack *const stk)</div><div class="ttdoc">This function checks whether the hash value in stack struct is equal to new-counted.</div><div class="ttdef"><b>Definition</b> hash.cpp:66</div></div>
+<div class="ttc" id="ahash_8h_html_a2f66053685b3897a7a35279f57b87845"><div class="ttname"><a href="hash_8h.html#a2f66053685b3897a7a35279f57b87845">StackDataFindHash</a></div><div class="ttdeci">ErrorType StackDataFindHash(Stack *const stk, Hash_t *const hash_ptr)</div><div class="ttdoc">This function finds hash of the stack data.</div><div class="ttdef"><b>Definition</b> hash.cpp:50</div></div>
+<div class="ttc" id="ahash_8h_html_a3bdc3237003fd1c87bd90a8087f05ba4"><div class="ttname"><a href="hash_8h.html#a3bdc3237003fd1c87bd90a8087f05ba4">StackFindHash</a></div><div class="ttdeci">ErrorType StackFindHash(Stack *const stk, Hash_t *const hash_ptr)</div><div class="ttdoc">This function finds hash of the stack.</div><div class="ttdef"><b>Definition</b> hash.cpp:24</div></div>
+<div class="ttc" id="ahash_8h_html_a53008fd46a9c6ccc2848643175bf5779"><div class="ttname"><a href="hash_8h.html#a53008fd46a9c6ccc2848643175bf5779">HashIncrease</a></div><div class="ttdeci">void HashIncrease(char *ptr, Hash_t *hash_ptr, size_t begin_index, size_t border_index)</div><div class="ttdoc">This function appends bytes values between begin_index and end_index to hash.</div><div class="ttdef"><b>Definition</b> hash.cpp:6</div></div>
+<div class="ttc" id="ahash_8h_html_a93b4363831915ba3085569e8a79d9281"><div class="ttname"><a href="hash_8h.html#a93b4363831915ba3085569e8a79d9281">HashDecrease</a></div><div class="ttdeci">void HashDecrease(char *ptr, Hash_t *hash_ptr, size_t begin_index, size_t border_index)</div><div class="ttdoc">This function substracts bytes values between begin_index and end_index to hash.</div><div class="ttdef"><b>Definition</b> hash.cpp:15</div></div>
 <div class="ttc" id="astack_8h_html"><div class="ttname"><a href="stack_8h.html">stack.h</a></div></div>
-<div class="ttc" id="astruct_stack_html"><div class="ttname"><a href="struct_stack.html">Stack</a></div><div class="ttdoc">This is the main struct with stack. It contains stack data, its size and capacity,...</div><div class="ttdef"><b>Definition</b> const.h:56</div></div>
+<div class="ttc" id="astruct_error_type_html"><div class="ttname"><a href="struct_error_type.html">ErrorType</a></div><div class="ttdoc">This bit field is used to flag errors.</div><div class="ttdef"><b>Definition</b> const.h:31</div></div>
+<div class="ttc" id="astruct_stack_html"><div class="ttname"><a href="struct_stack.html">Stack</a></div><div class="ttdoc">This is the main struct with stack. It contains stack data, its size and capacity,...</div><div class="ttdef"><b>Definition</b> stack.h:71</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -1,8 +1,4 @@
 var searchData=
 [
-  ['stack_5fctor_0',['STACK_CTOR',['../stack_8h.html#a7f7e7ea205476342cdac36c8881c81ba',1,'stack.h']]],
-  ['stack_5fctor_5fcap_1',['STACK_CTOR_CAP',['../stack_8h.html#a8dfbf0470df7749d0235cd641340e920',1,'stack.h']]],
-  ['stack_5fdtor_2',['STACK_DTOR',['../stack_8h.html#a0fa9b03eaa1bd543abd892ff9c0bd326',1,'stack.h']]],
-  ['stack_5fdump_3',['STACK_DUMP',['../stack_8h.html#ad8065130fab9d54940bd1e3b045f9072',1,'stack.h']]],
-  ['stack_5fverify_4',['STACK_VERIFY',['../stack_8h.html#a8765fd4de85182497f296d43a357a03d',1,'stack.h']]]
+  ['output_5ff_0',['OUTPUT_F',['../config_8h.html#a5c374735cebf9ce574ec0892d9d3ed04',1,'config.h']]]
 ];

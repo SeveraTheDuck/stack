@@ -74,6 +74,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">stack.h File Reference</div></div>
@@ -88,37 +89,53 @@ $(function() {
 </div>
 <p><a href="stack_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_stack.html">Stack</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the main struct with stack. It contains stack data, its size and capacity, its initial info, struct with errors, canaries and hash.  <a href="struct_stack.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
 Macros</h2></td></tr>
+<tr class="memitem:a32a3bfc549f278e02e3a18eeeaf0aecb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stack_8h.html#a32a3bfc549f278e02e3a18eeeaf0aecb">STACK_GET_ELEM_INFO</a>&#160;&#160;&#160;__LINE__, __FILE__, __func__</td></tr>
+<tr class="memdesc:a32a3bfc549f278e02e3a18eeeaf0aecb"><td class="mdescLeft">&#160;</td><td class="mdescRight">This define includes line number, file name and function name where STACK_CTOR was called. It is used for <a class="el" href="stack_8h.html#a7f7e7ea205476342cdac36c8881c81ba" title="This is a short call for StackCtor() function (debug version).">STACK_CTOR()</a> call.  <br /></td></tr>
+<tr class="separator:a32a3bfc549f278e02e3a18eeeaf0aecb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a892ec70c3494d4ac2ffb7f97819d07d0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stack_8h.html#a892ec70c3494d4ac2ffb7f97819d07d0">STACK_CTOR_RECIVE_INFO</a></td></tr>
+<tr class="memdesc:a892ec70c3494d4ac2ffb7f97819d07d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">This define includes initial name, line number, file name and function name where STACK_CTOR was called. It is used for <a class="el" href="stack_8h.html#ad05da269ae17be34ac82cf0a4c54171e" title="This is a constructor for stack struct.">StackCtor()</a> function arguments list.  <br /></td></tr>
+<tr class="separator:a892ec70c3494d4ac2ffb7f97819d07d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7f7e7ea205476342cdac36c8881c81ba"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stack_8h.html#a7f7e7ea205476342cdac36c8881c81ba">STACK_CTOR</a>(stk)</td></tr>
+<tr class="memdesc:a7f7e7ea205476342cdac36c8881c81ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is a short call for <a class="el" href="stack_8h.html#ad05da269ae17be34ac82cf0a4c54171e" title="This is a constructor for stack struct.">StackCtor()</a> function (debug version).  <br /></td></tr>
 <tr class="separator:a7f7e7ea205476342cdac36c8881c81ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8dfbf0470df7749d0235cd641340e920"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stack_8h.html#a8dfbf0470df7749d0235cd641340e920">STACK_CTOR_CAP</a>(stk,  stack_capacity)</td></tr>
+<tr class="memdesc:a8dfbf0470df7749d0235cd641340e920"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is a short call for <a class="el" href="stack_8h.html#ad05da269ae17be34ac82cf0a4c54171e" title="This is a constructor for stack struct.">StackCtor()</a> function with capacity parametr (debug version).  <br /></td></tr>
 <tr class="separator:a8dfbf0470df7749d0235cd641340e920"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0fa9b03eaa1bd543abd892ff9c0bd326"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stack_8h.html#a0fa9b03eaa1bd543abd892ff9c0bd326">STACK_DTOR</a>(stk)&#160;&#160;&#160;<a class="el" href="stack_8h.html#a4c17927deca99e5e523bb0bbc274a1b2">StackDtor</a> (stk);</td></tr>
+<tr class="memitem:a0fa9b03eaa1bd543abd892ff9c0bd326"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stack_8h.html#a0fa9b03eaa1bd543abd892ff9c0bd326">STACK_DTOR</a>(stk)&#160;&#160;&#160;<a class="el" href="stack_8h.html#a595893aef6fd6d6456ec3d9fcb68af8c">StackDtor</a> (stk)</td></tr>
+<tr class="memdesc:a0fa9b03eaa1bd543abd892ff9c0bd326"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is a short call for <a class="el" href="stack_8h.html#a595893aef6fd6d6456ec3d9fcb68af8c" title="This is a destructor for stack struct.">StackDtor()</a> function. It is not shorter, but used for sameness of macro calls for <a class="el" href="stack_8h.html#ad05da269ae17be34ac82cf0a4c54171e" title="This is a constructor for stack struct.">StackCtor()</a> and <a class="el" href="stack_8h.html#a595893aef6fd6d6456ec3d9fcb68af8c" title="This is a destructor for stack struct.">StackDtor()</a>.  <br /></td></tr>
 <tr class="separator:a0fa9b03eaa1bd543abd892ff9c0bd326"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad8065130fab9d54940bd1e3b045f9072"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stack_8h.html#ad8065130fab9d54940bd1e3b045f9072">STACK_DUMP</a>(stk)&#160;&#160;&#160;<a class="el" href="errors_8cpp.html#a4ad98a512dbcc47eb122e3de76d22a5a">StackDump</a> (stk, __FILE__, __LINE__, __func__)</td></tr>
-<tr class="separator:ad8065130fab9d54940bd1e3b045f9072"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8765fd4de85182497f296d43a357a03d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stack_8h.html#a8765fd4de85182497f296d43a357a03d">STACK_VERIFY</a>(stk)</td></tr>
-<tr class="separator:a8765fd4de85182497f296d43a357a03d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a8fa2d62d912ea587a47d644e66ce652f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="const_8h.html#a684a63da8088b0451444dda543e91bf1">Error_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stack_8h.html#a8fa2d62d912ea587a47d644e66ce652f">StackCtor</a> (<a class="el" href="struct_stack.html">Stack</a> *const stk, const char *const init_name, const size_t init_line, const char *const file_name, const char *const init_func, size_t stack_capacity=<a class="el" href="config_8h.html#a8c29033b0c8f720cc599c3ab52679c80">INIT_CAPACITY</a>)</td></tr>
-<tr class="separator:a8fa2d62d912ea587a47d644e66ce652f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c17927deca99e5e523bb0bbc274a1b2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="const_8h.html#a684a63da8088b0451444dda543e91bf1">Error_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stack_8h.html#a4c17927deca99e5e523bb0bbc274a1b2">StackDtor</a> (<a class="el" href="struct_stack.html">Stack</a> *stk)</td></tr>
-<tr class="separator:a4c17927deca99e5e523bb0bbc274a1b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8a195cf9d1813df8a61046d503bbd72"><td class="memItemLeft" align="right" valign="top"><a class="el" href="const_8h.html#a684a63da8088b0451444dda543e91bf1">Error_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stack_8h.html#ae8a195cf9d1813df8a61046d503bbd72">StackDataAlloc</a> (<a class="el" href="struct_stack.html">Stack</a> *const stk, <a class="el" href="config_8h.html#a080be3bdb852e7fe4ae09e67e3f7012c">Elem_t</a> *const allocated_memory)</td></tr>
-<tr class="separator:ae8a195cf9d1813df8a61046d503bbd72"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae3d430f893c37a9616af85b0b81d6552"><td class="memItemLeft" align="right" valign="top"><a class="el" href="const_8h.html#a684a63da8088b0451444dda543e91bf1">Error_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stack_8h.html#ae3d430f893c37a9616af85b0b81d6552">FillCanary</a> (<a class="el" href="struct_stack.html">Stack</a> *const stk)</td></tr>
-<tr class="separator:ae3d430f893c37a9616af85b0b81d6552"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a924668de085e02342df06240f379b1cf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="const_8h.html#a684a63da8088b0451444dda543e91bf1">Error_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stack_8h.html#a924668de085e02342df06240f379b1cf">StackResize</a> (<a class="el" href="struct_stack.html">Stack</a> *const stk, const <a class="el" href="const_8h.html#a9fe8cb65a95a811d67a7c1ada787f3ab">ResizeMode</a> direction)</td></tr>
-<tr class="separator:a924668de085e02342df06240f379b1cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a83c585079d59fe7d33be29de94112184"><td class="memItemLeft" align="right" valign="top"><a class="el" href="const_8h.html#a684a63da8088b0451444dda543e91bf1">Error_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stack_8h.html#a83c585079d59fe7d33be29de94112184">StackPush</a> (<a class="el" href="struct_stack.html">Stack</a> *const stk, const <a class="el" href="config_8h.html#a080be3bdb852e7fe4ae09e67e3f7012c">Elem_t</a> value)</td></tr>
-<tr class="separator:a83c585079d59fe7d33be29de94112184"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a166d423541f95d9d8a7c8927054a11b3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="const_8h.html#a684a63da8088b0451444dda543e91bf1">Error_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stack_8h.html#a166d423541f95d9d8a7c8927054a11b3">StackPop</a> (<a class="el" href="struct_stack.html">Stack</a> *const stk, <a class="el" href="config_8h.html#a080be3bdb852e7fe4ae09e67e3f7012c">Elem_t</a> *const return_value)</td></tr>
-<tr class="separator:a166d423541f95d9d8a7c8927054a11b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af9ec0db1aa80920f07f6d6bd732c01fa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="const_8h.html#a684a63da8088b0451444dda543e91bf1">Error_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stack_8h.html#af9ec0db1aa80920f07f6d6bd732c01fa">StackPrint</a> (<a class="el" href="struct_stack.html">Stack</a> *const stk)</td></tr>
-<tr class="separator:af9ec0db1aa80920f07f6d6bd732c01fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad05da269ae17be34ac82cf0a4c54171e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_error_type.html">ErrorType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stack_8h.html#ad05da269ae17be34ac82cf0a4c54171e">StackCtor</a> (<a class="el" href="struct_stack.html">Stack</a> *const stk, <a class="el" href="stack_8h.html#a892ec70c3494d4ac2ffb7f97819d07d0">STACK_CTOR_RECIVE_INFO</a> size_t stack_capacity=<a class="el" href="config_8h.html#a8c29033b0c8f720cc599c3ab52679c80">INIT_CAPACITY</a>)</td></tr>
+<tr class="memdesc:ad05da269ae17be34ac82cf0a4c54171e"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is a constructor for stack struct.  <br /></td></tr>
+<tr class="separator:ad05da269ae17be34ac82cf0a4c54171e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a595893aef6fd6d6456ec3d9fcb68af8c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_error_type.html">ErrorType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stack_8h.html#a595893aef6fd6d6456ec3d9fcb68af8c">StackDtor</a> (<a class="el" href="struct_stack.html">Stack</a> *stk)</td></tr>
+<tr class="memdesc:a595893aef6fd6d6456ec3d9fcb68af8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is a destructor for stack struct.  <br /></td></tr>
+<tr class="separator:a595893aef6fd6d6456ec3d9fcb68af8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a246db40834d12b9da56dbc7b90dddb9c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_error_type.html">ErrorType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stack_8h.html#a246db40834d12b9da56dbc7b90dddb9c">StackDataAlloc</a> (<a class="el" href="struct_stack.html">Stack</a> *const stk, <a class="el" href="config_8h.html#a080be3bdb852e7fe4ae09e67e3f7012c">Elem_t</a> *const allocated_memory)</td></tr>
+<tr class="memdesc:a246db40834d12b9da56dbc7b90dddb9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is function for (re-)allocating memory for stack data.  <br /></td></tr>
+<tr class="separator:a246db40834d12b9da56dbc7b90dddb9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a942c6dcbcf88d26e7c0b67374f959cb9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_error_type.html">ErrorType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stack_8h.html#a942c6dcbcf88d26e7c0b67374f959cb9">FillCanary</a> (<a class="el" href="struct_stack.html">Stack</a> *const stk)</td></tr>
+<tr class="memdesc:a942c6dcbcf88d26e7c0b67374f959cb9"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is a function to fill canaries in stack data.  <br /></td></tr>
+<tr class="separator:a942c6dcbcf88d26e7c0b67374f959cb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05347880c6184c8875bdc3678dedeb67"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_error_type.html">ErrorType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stack_8h.html#a05347880c6184c8875bdc3678dedeb67">StackPush</a> (<a class="el" href="struct_stack.html">Stack</a> *const stk, const <a class="el" href="config_8h.html#a080be3bdb852e7fe4ae09e67e3f7012c">Elem_t</a> value)</td></tr>
+<tr class="memdesc:a05347880c6184c8875bdc3678dedeb67"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is a push function for stack.  <br /></td></tr>
+<tr class="separator:a05347880c6184c8875bdc3678dedeb67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abbfcc562b3617c8c769330c58974620d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_error_type.html">ErrorType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stack_8h.html#abbfcc562b3617c8c769330c58974620d">StackPop</a> (<a class="el" href="struct_stack.html">Stack</a> *const stk, <a class="el" href="config_8h.html#a080be3bdb852e7fe4ae09e67e3f7012c">Elem_t</a> *const return_value)</td></tr>
+<tr class="memdesc:abbfcc562b3617c8c769330c58974620d"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is a pop function for stack.  <br /></td></tr>
+<tr class="separator:abbfcc562b3617c8c769330c58974620d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8251325e81fac8d4c1f244e56c60085"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_error_type.html">ErrorType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stack_8h.html#af8251325e81fac8d4c1f244e56c60085">StackPrint</a> (<a class="el" href="struct_stack.html">Stack</a> *const stk)</td></tr>
+<tr class="memdesc:af8251325e81fac8d4c1f244e56c60085"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is a simple print of stack data.  <br /></td></tr>
+<tr class="separator:af8251325e81fac8d4c1f244e56c60085"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a7f7e7ea205476342cdac36c8881c81ba" name="a7f7e7ea205476342cdac36c8881c81ba"></a>
@@ -136,10 +153,13 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">                                    <a class="code hl_function" href="stack_8h.html#a8fa2d62d912ea587a47d644e66ce652f">StackCtor</a> ((stk), #stk,\</div>
-<div class="line">                                    __LINE__, __FILE__, __func__)</div>
-<div class="ttc" id="astack_8h_html_a8fa2d62d912ea587a47d644e66ce652f"><div class="ttname"><a href="stack_8h.html#a8fa2d62d912ea587a47d644e66ce652f">StackCtor</a></div><div class="ttdeci">Error_t StackCtor(Stack *const stk, const char *const init_name, const size_t init_line, const char *const file_name, const char *const init_func, size_t stack_capacity=INIT_CAPACITY)</div><div class="ttdef"><b>Definition</b> stack.cpp:7</div></div>
+<b>Value:</b><div class="fragment"><div class="line">                                        <a class="code hl_function" href="stack_8h.html#ad05da269ae17be34ac82cf0a4c54171e">StackCtor</a> ((stk), #stk,\</div>
+<div class="line">                                        <a class="code hl_define" href="stack_8h.html#a32a3bfc549f278e02e3a18eeeaf0aecb">STACK_GET_ELEM_INFO</a>)</div>
+<div class="ttc" id="astack_8h_html_a32a3bfc549f278e02e3a18eeeaf0aecb"><div class="ttname"><a href="stack_8h.html#a32a3bfc549f278e02e3a18eeeaf0aecb">STACK_GET_ELEM_INFO</a></div><div class="ttdeci">#define STACK_GET_ELEM_INFO</div><div class="ttdoc">This define includes line number, file name and function name where STACK_CTOR was called....</div><div class="ttdef"><b>Definition</b> stack.h:31</div></div>
+<div class="ttc" id="astack_8h_html_ad05da269ae17be34ac82cf0a4c54171e"><div class="ttname"><a href="stack_8h.html#ad05da269ae17be34ac82cf0a4c54171e">StackCtor</a></div><div class="ttdeci">ErrorType StackCtor(Stack *const stk, STACK_CTOR_RECIVE_INFO size_t stack_capacity=INIT_CAPACITY)</div><div class="ttdoc">This is a constructor for stack struct.</div><div class="ttdef"><b>Definition</b> stack.cpp:7</div></div>
 </div><!-- fragment -->
+<p>This is a short call for <a class="el" href="stack_8h.html#ad05da269ae17be34ac82cf0a4c54171e" title="This is a constructor for stack struct.">StackCtor()</a> function (debug version). </p>
+
 </div>
 </div>
 <a id="a8dfbf0470df7749d0235cd641340e920" name="a8dfbf0470df7749d0235cd641340e920"></a>
@@ -167,10 +187,32 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">                                                        <a class="code hl_function" href="stack_8h.html#a8fa2d62d912ea587a47d644e66ce652f">StackCtor</a> ((stk), #stk,\</div>
-<div class="line">                                                        __LINE__, __FILE__, __func__,\</div>
-<div class="line">                                                        stack_capacity)</div>
+<b>Value:</b><div class="fragment"><div class="line">                                                            <a class="code hl_function" href="stack_8h.html#ad05da269ae17be34ac82cf0a4c54171e">StackCtor</a> ((stk), #stk,\</div>
+<div class="line">                                                            <a class="code hl_define" href="stack_8h.html#a32a3bfc549f278e02e3a18eeeaf0aecb">STACK_GET_ELEM_INFO</a>,\</div>
+<div class="line">                                                            stack_capacity)</div>
 </div><!-- fragment -->
+<p>This is a short call for <a class="el" href="stack_8h.html#ad05da269ae17be34ac82cf0a4c54171e" title="This is a constructor for stack struct.">StackCtor()</a> function with capacity parametr (debug version). </p>
+
+</div>
+</div>
+<a id="a892ec70c3494d4ac2ffb7f97819d07d0" name="a892ec70c3494d4ac2ffb7f97819d07d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a892ec70c3494d4ac2ffb7f97819d07d0">&#9670;&#160;</a></span>STACK_CTOR_RECIVE_INFO</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define STACK_CTOR_RECIVE_INFO</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">                                   <span class="keyword">const</span> <span class="keywordtype">char</span>*  <span class="keyword">const</span> init_name,\</div>
+<div class="line">                                   <span class="keyword">const</span> <span class="keywordtype">size_t</span>       init_line,\</div>
+<div class="line">                                   <span class="keyword">const</span> <span class="keywordtype">char</span>*  <span class="keyword">const</span> init_file,\</div>
+<div class="line">                                   <span class="keyword">const</span> <span class="keywordtype">char</span>*  <span class="keyword">const</span> init_func,</div>
+</div><!-- fragment -->
+<p>This define includes initial name, line number, file name and function name where STACK_CTOR was called. It is used for <a class="el" href="stack_8h.html#ad05da269ae17be34ac82cf0a4c54171e" title="This is a constructor for stack struct.">StackCtor()</a> function arguments list. </p>
+
 </div>
 </div>
 <a id="a0fa9b03eaa1bd543abd892ff9c0bd326" name="a0fa9b03eaa1bd543abd892ff9c0bd326"></a>
@@ -184,67 +226,40 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">stk</td><td>)</td>
-          <td>&#160;&#160;&#160;<a class="el" href="stack_8h.html#a4c17927deca99e5e523bb0bbc274a1b2">StackDtor</a> (stk);</td>
+          <td>&#160;&#160;&#160;<a class="el" href="stack_8h.html#a595893aef6fd6d6456ec3d9fcb68af8c">StackDtor</a> (stk)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
+<p>This is a short call for <a class="el" href="stack_8h.html#a595893aef6fd6d6456ec3d9fcb68af8c" title="This is a destructor for stack struct.">StackDtor()</a> function. It is not shorter, but used for sameness of macro calls for <a class="el" href="stack_8h.html#ad05da269ae17be34ac82cf0a4c54171e" title="This is a constructor for stack struct.">StackCtor()</a> and <a class="el" href="stack_8h.html#a595893aef6fd6d6456ec3d9fcb68af8c" title="This is a destructor for stack struct.">StackDtor()</a>. </p>
+
 </div>
 </div>
-<a id="ad8065130fab9d54940bd1e3b045f9072" name="ad8065130fab9d54940bd1e3b045f9072"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad8065130fab9d54940bd1e3b045f9072">&#9670;&#160;</a></span>STACK_DUMP</h2>
+<a id="a32a3bfc549f278e02e3a18eeeaf0aecb" name="a32a3bfc549f278e02e3a18eeeaf0aecb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32a3bfc549f278e02e3a18eeeaf0aecb">&#9670;&#160;</a></span>STACK_GET_ELEM_INFO</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define STACK_DUMP</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">stk</td><td>)</td>
-          <td>&#160;&#160;&#160;<a class="el" href="errors_8cpp.html#a4ad98a512dbcc47eb122e3de76d22a5a">StackDump</a> (stk, __FILE__, __LINE__, __func__)</td>
+          <td class="memname">#define STACK_GET_ELEM_INFO&#160;&#160;&#160;__LINE__, __FILE__, __func__</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-</div>
-</div>
-<a id="a8765fd4de85182497f296d43a357a03d" name="a8765fd4de85182497f296d43a357a03d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8765fd4de85182497f296d43a357a03d">&#9670;&#160;</a></span>STACK_VERIFY</h2>
+<p>This define includes line number, file name and function name where STACK_CTOR was called. It is used for <a class="el" href="stack_8h.html#a7f7e7ea205476342cdac36c8881c81ba" title="This is a short call for StackCtor() function (debug version).">STACK_CTOR()</a> call. </p>
 
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define STACK_VERIFY</td>
-          <td>(</td>
-          <td class="paramtype">&#160;</td>
-          <td class="paramname">stk</td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line">    <a class="code hl_function" href="errors_8cpp.html#a2d7ae8160255454c8e8d578ea24d2769">assert</a> (stk);\</div>
-<div class="line">    (stk)-&gt;stack_err.STACK_ERROR_OCCURED = <a class="code hl_function" href="errors_8cpp.html#a5b0205927ac4cb77ff9cd08f817c8863">StackVerify</a> (stk);\</div>
-<div class="line">    if ((stk)-&gt;stack_err.STACK_ERROR_OCCURED)\</div>
-<div class="line">    {\</div>
-<div class="line">        STACK_DUMP(stk);\</div>
-<div class="line">        return (stk)-&gt;stack_err.STACK_ERROR_OCCURED;\</div>
-<div class="line">    }</div>
-<div class="ttc" id="aerrors_8cpp_html_a2d7ae8160255454c8e8d578ea24d2769"><div class="ttname"><a href="errors_8cpp.html#a2d7ae8160255454c8e8d578ea24d2769">assert</a></div><div class="ttdeci">const char *const assert(fmt)</div></div>
-<div class="ttc" id="aerrors_8cpp_html_a5b0205927ac4cb77ff9cd08f817c8863"><div class="ttname"><a href="errors_8cpp.html#a5b0205927ac4cb77ff9cd08f817c8863">StackVerify</a></div><div class="ttdeci">Error_t StackVerify(Stack *const stk)</div><div class="ttdef"><b>Definition</b> errors.cpp:54</div></div>
-</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ae3d430f893c37a9616af85b0b81d6552" name="ae3d430f893c37a9616af85b0b81d6552"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae3d430f893c37a9616af85b0b81d6552">&#9670;&#160;</a></span>FillCanary()</h2>
+<a id="a942c6dcbcf88d26e7c0b67374f959cb9" name="a942c6dcbcf88d26e7c0b67374f959cb9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a942c6dcbcf88d26e7c0b67374f959cb9">&#9670;&#160;</a></span>FillCanary()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="const_8h.html#a684a63da8088b0451444dda543e91bf1">Error_t</a> FillCanary </td>
+          <td class="memname"><a class="el" href="struct_error_type.html">ErrorType</a> FillCanary </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_stack.html">Stack</a> *const&#160;</td>
           <td class="paramname"><em>stk</em></td><td>)</td>
@@ -253,16 +268,25 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>This is a function to fill canaries in stack data. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stk</td><td>Pointer to stack. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Struct stack_err with errors. </dd></dl>
+
 </div>
 </div>
-<a id="a8fa2d62d912ea587a47d644e66ce652f" name="a8fa2d62d912ea587a47d644e66ce652f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8fa2d62d912ea587a47d644e66ce652f">&#9670;&#160;</a></span>StackCtor()</h2>
+<a id="ad05da269ae17be34ac82cf0a4c54171e" name="ad05da269ae17be34ac82cf0a4c54171e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad05da269ae17be34ac82cf0a4c54171e">&#9670;&#160;</a></span>StackCtor()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="const_8h.html#a684a63da8088b0451444dda543e91bf1">Error_t</a> StackCtor </td>
+          <td class="memname"><a class="el" href="struct_error_type.html">ErrorType</a> StackCtor </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_stack.html">Stack</a> *const&#160;</td>
           <td class="paramname"><em>stk</em>, </td>
@@ -270,31 +294,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const char *const&#160;</td>
-          <td class="paramname"><em>init_name</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const size_t&#160;</td>
-          <td class="paramname"><em>init_line</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *const&#160;</td>
-          <td class="paramname"><em>file_name</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *const&#160;</td>
-          <td class="paramname"><em>init_func</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t&#160;</td>
+          <td class="paramtype"><a class="el" href="stack_8h.html#a892ec70c3494d4ac2ffb7f97819d07d0">STACK_CTOR_RECIVE_INFO</a> size_t&#160;</td>
           <td class="paramname"><em>stack_capacity</em> = <code><a class="el" href="config_8h.html#a8c29033b0c8f720cc599c3ab52679c80">INIT_CAPACITY</a></code>&#160;</td>
         </tr>
         <tr>
@@ -305,16 +305,30 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>This is a constructor for stack struct. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stk</td><td>Pointer to stack. </td></tr>
+    <tr><td class="paramname">init_name</td><td>Initial name of stack. </td></tr>
+    <tr><td class="paramname">init_line</td><td>Initial line of stack. </td></tr>
+    <tr><td class="paramname">init_file</td><td>Initial file of stack. </td></tr>
+    <tr><td class="paramname">init_func</td><td>Initial function of stack. </td></tr>
+    <tr><td class="paramname">stack_capacity</td><td>Initial capacity of stack. Optional parametr. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Struct stack_err with errors. </dd></dl>
+
 </div>
 </div>
-<a id="ae8a195cf9d1813df8a61046d503bbd72" name="ae8a195cf9d1813df8a61046d503bbd72"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae8a195cf9d1813df8a61046d503bbd72">&#9670;&#160;</a></span>StackDataAlloc()</h2>
+<a id="a246db40834d12b9da56dbc7b90dddb9c" name="a246db40834d12b9da56dbc7b90dddb9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a246db40834d12b9da56dbc7b90dddb9c">&#9670;&#160;</a></span>StackDataAlloc()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="const_8h.html#a684a63da8088b0451444dda543e91bf1">Error_t</a> StackDataAlloc </td>
+          <td class="memname"><a class="el" href="struct_error_type.html">ErrorType</a> StackDataAlloc </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_stack.html">Stack</a> *const&#160;</td>
           <td class="paramname"><em>stk</em>, </td>
@@ -333,16 +347,28 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>This is function for (re-)allocating memory for stack data. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stk</td><td>Pointer to stack. </td></tr>
+    <tr><td class="paramname">allocated_memory</td><td>Pointer to previosly allocated memory. Nullptr in <a class="el" href="stack_8h.html#ad05da269ae17be34ac82cf0a4c54171e" title="This is a constructor for stack struct.">StackCtor()</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Struct stack_err with errors. </dd></dl>
+<p>Data align in case of sizeof (Elem_t) != sizeof (Canary_t).</p>
+<p>Allocation itself.</p>
+
 </div>
 </div>
-<a id="a4c17927deca99e5e523bb0bbc274a1b2" name="a4c17927deca99e5e523bb0bbc274a1b2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4c17927deca99e5e523bb0bbc274a1b2">&#9670;&#160;</a></span>StackDtor()</h2>
+<a id="a595893aef6fd6d6456ec3d9fcb68af8c" name="a595893aef6fd6d6456ec3d9fcb68af8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a595893aef6fd6d6456ec3d9fcb68af8c">&#9670;&#160;</a></span>StackDtor()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="const_8h.html#a684a63da8088b0451444dda543e91bf1">Error_t</a> StackDtor </td>
+          <td class="memname"><a class="el" href="struct_error_type.html">ErrorType</a> StackDtor </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_stack.html">Stack</a> *&#160;</td>
           <td class="paramname"><em>stk</em></td><td>)</td>
@@ -351,16 +377,25 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>This is a destructor for stack struct. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stk</td><td>Pointer to stack. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Struct stack_err with errors. </dd></dl>
+
 </div>
 </div>
-<a id="a166d423541f95d9d8a7c8927054a11b3" name="a166d423541f95d9d8a7c8927054a11b3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a166d423541f95d9d8a7c8927054a11b3">&#9670;&#160;</a></span>StackPop()</h2>
+<a id="abbfcc562b3617c8c769330c58974620d" name="abbfcc562b3617c8c769330c58974620d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abbfcc562b3617c8c769330c58974620d">&#9670;&#160;</a></span>StackPop()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="const_8h.html#a684a63da8088b0451444dda543e91bf1">Error_t</a> StackPop </td>
+          <td class="memname"><a class="el" href="struct_error_type.html">ErrorType</a> StackPop </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_stack.html">Stack</a> *const&#160;</td>
           <td class="paramname"><em>stk</em>, </td>
@@ -379,16 +414,27 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>This is a pop function for stack. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stk</td><td>Pointer to stack. </td></tr>
+    <tr><td class="paramname">return_value</td><td>Pointer to poping value of type Elem_t*. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Struct stack_err with errors. </dd></dl>
+<p>The pop itself.</p>
+
 </div>
 </div>
-<a id="af9ec0db1aa80920f07f6d6bd732c01fa" name="af9ec0db1aa80920f07f6d6bd732c01fa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af9ec0db1aa80920f07f6d6bd732c01fa">&#9670;&#160;</a></span>StackPrint()</h2>
+<a id="af8251325e81fac8d4c1f244e56c60085" name="af8251325e81fac8d4c1f244e56c60085"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8251325e81fac8d4c1f244e56c60085">&#9670;&#160;</a></span>StackPrint()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="const_8h.html#a684a63da8088b0451444dda543e91bf1">Error_t</a> StackPrint </td>
+          <td class="memname"><a class="el" href="struct_error_type.html">ErrorType</a> StackPrint </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_stack.html">Stack</a> *const&#160;</td>
           <td class="paramname"><em>stk</em></td><td>)</td>
@@ -397,16 +443,25 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>This is a simple print of stack data. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stk</td><td>Pointer to stack. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Struct stack_err with errors. </dd></dl>
+
 </div>
 </div>
-<a id="a83c585079d59fe7d33be29de94112184" name="a83c585079d59fe7d33be29de94112184"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a83c585079d59fe7d33be29de94112184">&#9670;&#160;</a></span>StackPush()</h2>
+<a id="a05347880c6184c8875bdc3678dedeb67" name="a05347880c6184c8875bdc3678dedeb67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05347880c6184c8875bdc3678dedeb67">&#9670;&#160;</a></span>StackPush()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="const_8h.html#a684a63da8088b0451444dda543e91bf1">Error_t</a> StackPush </td>
+          <td class="memname"><a class="el" href="struct_error_type.html">ErrorType</a> StackPush </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_stack.html">Stack</a> *const&#160;</td>
           <td class="paramname"><em>stk</em>, </td>
@@ -425,33 +480,16 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-</div>
-</div>
-<a id="a924668de085e02342df06240f379b1cf" name="a924668de085e02342df06240f379b1cf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a924668de085e02342df06240f379b1cf">&#9670;&#160;</a></span>StackResize()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="const_8h.html#a684a63da8088b0451444dda543e91bf1">Error_t</a> StackResize </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_stack.html">Stack</a> *const&#160;</td>
-          <td class="paramname"><em>stk</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="const_8h.html#a9fe8cb65a95a811d67a7c1ada787f3ab">ResizeMode</a>&#160;</td>
-          <td class="paramname"><em>direction</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<p>This is a push function for stack. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stk</td><td>Pointer to stack. </td></tr>
+    <tr><td class="paramname">value</td><td>Pushing value of type Elem_t. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Struct stack_err with errors. </dd></dl>
+<p>The push itself.</p>
 
 </div>
 </div>

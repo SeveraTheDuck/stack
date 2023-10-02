@@ -3,13 +3,11 @@ var indexSectionsWithContent =
   0: "_acdefhilmoprsv",
   1: "es",
   2: "cehmrs",
-  3: "_acfmsv",
-  4: "adfilprs",
+  3: "_afhmsv",
+  4: "adfhilprs",
   5: "e",
-  6: "r",
-  7: "es",
-  8: "chos",
-  9: "s"
+  6: "_chos",
+  7: "ms"
 };
 
 var indexSectionNames =
@@ -20,10 +18,8 @@ var indexSectionNames =
   3: "functions",
   4: "variables",
   5: "typedefs",
-  6: "enums",
-  7: "enumvalues",
-  8: "defines",
-  9: "pages"
+  6: "defines",
+  7: "pages"
 };
 
 var indexSectionLabels =
@@ -34,9 +30,7 @@ var indexSectionLabels =
   3: "Functions",
   4: "Variables",
   5: "Typedefs",
-  6: "Enumerations",
-  7: "Enumerator",
-  8: "Macros",
-  9: "Pages"
+  6: "Macros",
+  7: "Pages"
 };
 

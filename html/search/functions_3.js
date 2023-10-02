@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['fclose_0',['fclose',['../errors_8cpp.html#a2145366fe9f5dc2f0b3373bf4bdd0763',1,'errors.cpp']]],
-  ['fillcanary_1',['FillCanary',['../stack_8h.html#ae3d430f893c37a9616af85b0b81d6552',1,'FillCanary(Stack *const stk):&#160;stack.cpp'],['../stack_8cpp.html#ae3d430f893c37a9616af85b0b81d6552',1,'FillCanary(Stack *const stk):&#160;stack.cpp']]]
+  ['hashdecrease_0',['HashDecrease',['../hash_8cpp.html#a93b4363831915ba3085569e8a79d9281',1,'HashDecrease(char *ptr, Hash_t *hash_ptr, size_t begin_index, size_t border_index):&#160;hash.cpp'],['../hash_8h.html#a93b4363831915ba3085569e8a79d9281',1,'HashDecrease(char *ptr, Hash_t *hash_ptr, size_t begin_index, size_t border_index):&#160;hash.cpp']]],
+  ['hashincrease_1',['HashIncrease',['../hash_8cpp.html#a53008fd46a9c6ccc2848643175bf5779',1,'HashIncrease(char *ptr, Hash_t *hash_ptr, size_t begin_index, size_t border_index):&#160;hash.cpp'],['../hash_8h.html#a53008fd46a9c6ccc2848643175bf5779',1,'HashIncrease(char *ptr, Hash_t *hash_ptr, size_t begin_index, size_t border_index):&#160;hash.cpp']]]
 ];

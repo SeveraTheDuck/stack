@@ -87,45 +87,225 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a2f048cfd49b14fd44a6b044e4fbf0051"><td class="memItemLeft" align="right" valign="top"><a class="el" href="const_8h.html#a684a63da8088b0451444dda543e91bf1">Error_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hash_8h.html#a2f048cfd49b14fd44a6b044e4fbf0051">StackFindHash</a> (<a class="el" href="struct_stack.html">Stack</a> *stk)</td></tr>
-<tr class="separator:a2f048cfd49b14fd44a6b044e4fbf0051"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7d0a584827386ce3985d861dd7e25bce"><td class="memItemLeft" align="right" valign="top"><a class="el" href="const_8h.html#a684a63da8088b0451444dda543e91bf1">Error_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hash_8h.html#a7d0a584827386ce3985d861dd7e25bce">StackHashError</a> (<a class="el" href="struct_stack.html">Stack</a> *stk)</td></tr>
-<tr class="separator:a7d0a584827386ce3985d861dd7e25bce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53008fd46a9c6ccc2848643175bf5779"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hash_8h.html#a53008fd46a9c6ccc2848643175bf5779">HashIncrease</a> (char *ptr, Hash_t *hash_ptr, size_t begin_index, size_t border_index)</td></tr>
+<tr class="memdesc:a53008fd46a9c6ccc2848643175bf5779"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function appends bytes values between begin_index and end_index to hash.  <br /></td></tr>
+<tr class="separator:a53008fd46a9c6ccc2848643175bf5779"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93b4363831915ba3085569e8a79d9281"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hash_8h.html#a93b4363831915ba3085569e8a79d9281">HashDecrease</a> (char *ptr, Hash_t *hash_ptr, size_t begin_index, size_t border_index)</td></tr>
+<tr class="memdesc:a93b4363831915ba3085569e8a79d9281"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function substracts bytes values between begin_index and end_index to hash.  <br /></td></tr>
+<tr class="separator:a93b4363831915ba3085569e8a79d9281"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bdc3237003fd1c87bd90a8087f05ba4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_error_type.html">ErrorType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hash_8h.html#a3bdc3237003fd1c87bd90a8087f05ba4">StackFindHash</a> (<a class="el" href="struct_stack.html">Stack</a> *const stk, Hash_t *const hash_ptr)</td></tr>
+<tr class="memdesc:a3bdc3237003fd1c87bd90a8087f05ba4"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function finds hash of the stack.  <br /></td></tr>
+<tr class="separator:a3bdc3237003fd1c87bd90a8087f05ba4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f66053685b3897a7a35279f57b87845"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_error_type.html">ErrorType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hash_8h.html#a2f66053685b3897a7a35279f57b87845">StackDataFindHash</a> (<a class="el" href="struct_stack.html">Stack</a> *const stk, Hash_t *const hash_ptr)</td></tr>
+<tr class="memdesc:a2f66053685b3897a7a35279f57b87845"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function finds hash of the stack data.  <br /></td></tr>
+<tr class="separator:a2f66053685b3897a7a35279f57b87845"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1382486c465b991d376263d40c55c681"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_error_type.html">ErrorType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hash_8h.html#a1382486c465b991d376263d40c55c681">StackHashError</a> (<a class="el" href="struct_stack.html">Stack</a> *const stk)</td></tr>
+<tr class="memdesc:a1382486c465b991d376263d40c55c681"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function checks whether the hash value in stack struct is equal to new-counted.  <br /></td></tr>
+<tr class="separator:a1382486c465b991d376263d40c55c681"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a2f048cfd49b14fd44a6b044e4fbf0051" name="a2f048cfd49b14fd44a6b044e4fbf0051"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2f048cfd49b14fd44a6b044e4fbf0051">&#9670;&#160;</a></span>StackFindHash()</h2>
+<a id="a93b4363831915ba3085569e8a79d9281" name="a93b4363831915ba3085569e8a79d9281"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a93b4363831915ba3085569e8a79d9281">&#9670;&#160;</a></span>HashDecrease()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="const_8h.html#a684a63da8088b0451444dda543e91bf1">Error_t</a> StackFindHash </td>
+          <td class="memname">void HashDecrease </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_stack.html">Stack</a> *&#160;</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Hash_t *&#160;</td>
+          <td class="paramname"><em>hash_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>begin_index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>border_index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This function substracts bytes values between begin_index and end_index to hash. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ptr</td><td>Pointer to the beginning of byte section. </td></tr>
+    <tr><td class="paramname">hash_ptr</td><td>Pointer to hash. </td></tr>
+    <tr><td class="paramname">begin_index</td><td>Beginning index. </td></tr>
+    <tr><td class="paramname">border_index</td><td>Ending index. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a53008fd46a9c6ccc2848643175bf5779" name="a53008fd46a9c6ccc2848643175bf5779"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53008fd46a9c6ccc2848643175bf5779">&#9670;&#160;</a></span>HashIncrease()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HashIncrease </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Hash_t *&#160;</td>
+          <td class="paramname"><em>hash_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>begin_index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>border_index</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This function appends bytes values between begin_index and end_index to hash. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ptr</td><td>Pointer to the beginning of byte section. </td></tr>
+    <tr><td class="paramname">hash_ptr</td><td>Pointer to hash. </td></tr>
+    <tr><td class="paramname">begin_index</td><td>Beginning index. </td></tr>
+    <tr><td class="paramname">border_index</td><td>Ending index. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a2f66053685b3897a7a35279f57b87845" name="a2f66053685b3897a7a35279f57b87845"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f66053685b3897a7a35279f57b87845">&#9670;&#160;</a></span>StackDataFindHash()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_error_type.html">ErrorType</a> StackDataFindHash </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_stack.html">Stack</a> *const&#160;</td>
+          <td class="paramname"><em>stk</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Hash_t *const&#160;</td>
+          <td class="paramname"><em>hash_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This function finds hash of the stack data. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stk</td><td>Pointer to stack. </td></tr>
+    <tr><td class="paramname">hash_ptr</td><td>Pointer to hash. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>It returns stack_err struct type of <a class="el" href="struct_error_type.html" title="This bit field is used to flag errors.">ErrorType</a>. </dd></dl>
+
+</div>
+</div>
+<a id="a3bdc3237003fd1c87bd90a8087f05ba4" name="a3bdc3237003fd1c87bd90a8087f05ba4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3bdc3237003fd1c87bd90a8087f05ba4">&#9670;&#160;</a></span>StackFindHash()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_error_type.html">ErrorType</a> StackFindHash </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_stack.html">Stack</a> *const&#160;</td>
+          <td class="paramname"><em>stk</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Hash_t *const&#160;</td>
+          <td class="paramname"><em>hash_ptr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This function finds hash of the stack. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stk</td><td>Pointer to stack. </td></tr>
+    <tr><td class="paramname">hash_ptr</td><td>Pointer to hash. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>It returns stack_err struct type of <a class="el" href="struct_error_type.html" title="This bit field is used to flag errors.">ErrorType</a>. </dd></dl>
+
+</div>
+</div>
+<a id="a1382486c465b991d376263d40c55c681" name="a1382486c465b991d376263d40c55c681"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1382486c465b991d376263d40c55c681">&#9670;&#160;</a></span>StackHashError()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="struct_error_type.html">ErrorType</a> StackHashError </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_stack.html">Stack</a> *const&#160;</td>
           <td class="paramname"><em>stk</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-</div>
-</div>
-<a id="a7d0a584827386ce3985d861dd7e25bce" name="a7d0a584827386ce3985d861dd7e25bce"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7d0a584827386ce3985d861dd7e25bce">&#9670;&#160;</a></span>StackHashError()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="const_8h.html#a684a63da8088b0451444dda543e91bf1">Error_t</a> StackHashError </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_stack.html">Stack</a> *&#160;</td>
-          <td class="paramname"><em>stk</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<p>This function checks whether the hash value in stack struct is equal to new-counted. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stk</td><td>Pointer to stack. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>It returns stack_err struct type of <a class="el" href="struct_error_type.html" title="This bit field is used to flag errors.">ErrorType</a>. </dd></dl>
 
 </div>
 </div>
