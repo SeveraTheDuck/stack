@@ -27,7 +27,7 @@
 *   <li>Set initial capacity of your stack and the multiplier its size would expand with when needed.</li>
 *   <li>To make your stack, make struct <code>Stack</code> and call for <code>STACK_CTOR()</code>.</li>
 *   <li>Full list of functions is provided in stack.h file. Use them as you like.</li>
-*   <li>When you finish working with stack, call for <code>STACK_DTOR</code> to destruct it.</li>
+*   <li>When you finish working with stack, call for <code>STACK_DTOR()</code> to destruct it.</li>
 * </ol>
 *
 */
