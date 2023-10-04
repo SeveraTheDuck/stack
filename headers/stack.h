@@ -1,21 +1,36 @@
 /**
 * @mainpage My Stack Documentation
-* This is my version of stack library. It includes different protection options,
-* conditional compilation, config and log files. \n
-* \n
-* The product is in progress. The goals are: \n
-* 1. Better doxygen. \n
-* 2. Different types of stack supported at once. \n
-* \n
-* What is done: \n
-* 1. Convenient config file - you can enable and disable canary and hash protection, debug mode and switch types of stack data. \n
-* 2. Log file is also should be declared in config file, so you could see your mistakes while working. \n
-* 3. Standart pop and push functions. \n
-* \n
-* For more information read docs for each function!
+* This is my version of stack library. It includes different protection options, <br>
+* conditional compilation, config and log files. <br>
+* <br>
+* The product is in progress. The goals are: <br>
+* <ol>
+*   <li>Better doxygen. </li>
+*   <li>Different types of stack supported at once. </li>
+* </ol>
+* <br>
+* What is done:<br>
+* <ol>
+*   <li>Convenient config file - you can enable and disable canary and hash protection, <br>
+*       debug mode and switch types of stack data.</li>
+*   <li>Log file is also should be declared in config file, so you could see your mistakes while working. </li>
+*   <li>Standart pop and push functions. </li>
+* </ol>
+* <br>
+* <br>
+* To work with stack, you must specify config.h file:
+* <ol>
+*   <li>In line <code>typedef int Elem_t;</code> instead of <code>int</code> plase the type you would like to have stack with.</li>
+*   <li>Set poison value and output format for your type of the stack.</li>
+*   <li>By enabling or disabling defines with <code>_DEBUG</code>, <code>CANARY_PROTECTION</code> and <code>HASH_PROTECTION</code>
+*       choose protection you want.</li>
+*   <li>Set initial capacity of your stack and the multiplier its size would expand with when needed.</li>
+*   <li>To make your stack, make struct <code>Stack</code> and call for <code>STACK_CTOR()</code>.</li>
+*   <li>Full list of functions is provided in stack.h file. Use them as you like.</li>
+*   <li>When you finish working with stack, call for <code>STACK_DTOR</code> to destruct it.</li>
+* </ol>
+*
 */
-
-
 
 #ifndef STACK_H
 #define STACK_H
