@@ -15,4 +15,4 @@ What is done:<br>
     <li>Log file is also should be declared in config file, so you could see your mistakes while working.</li>
     <li>Standart pop and push functions.</li>
 </ol>
-For more information read [docs](severatheduck.github.io/stack/) for each function!
+For more information read <a href = "https://severatheduck.github.io/stack/html/index.html">docs</a> for each function!
