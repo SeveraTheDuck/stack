@@ -1,4 +1,3 @@
-#define canary_begin canary_border
 #include "headers/stack.h"
 #include "headers/errors.h"
 
