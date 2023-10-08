@@ -26,10 +26,10 @@ const Elem_t POISON = -31415926;
 #define HASH_PROTECTION
 
 /// @brief This const tells the program the initial capacity of stack.
-const size_t INIT_CAPACITY     = 4;
+const size_t INIT_CAPACITY      = 4;
 
 /// @brief This const tells the program the multipier which by stack expands.
-const size_t RESIZE_MULTIPLIER = 2;
+const size_t RESIZE_MULTIPLIER  = 2;
 
 /// @brief This const tells the name of log file, where the mistakes would be showed.
 const char* const log_file_name = "log.txt";

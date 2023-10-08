@@ -4,7 +4,7 @@
 #ifdef HASH_PROTECTION
 
 void HashIncrease (char* ptr, Hash_t* hash_ptr,
-                 size_t begin_index, size_t border_index)
+                   size_t begin_index, size_t border_index)
 {
     for (size_t i = begin_index; i < border_index ; ++i)
     {
@@ -32,7 +32,6 @@ ErrorType StackFindHash (Stack*  const stk,
     size_t border = sizeof (Stack) - sizeof (Hash_t);
 
     #ifdef CANARY_PROTECTION
-        begin  += sizeof (Canary_t);
         border -= sizeof (Canary_t);
     #endif
 
@@ -55,7 +54,7 @@ ErrorType StackDataFindHash (Stack*  const stk,
 
     #ifdef CANARY_PROTECTION
         char*  left_canary_ptr = (ptr - sizeof(Canary_t));
-        char* right_canary_ptr = (ptr - sizeof(Canary_t));
+        char* right_canary_ptr = (ptr + stk->data_capacity * sizeof (Elem_t));
         HashIncrease (left_canary_ptr,  hash_ptr, 0, sizeof (Canary_t));
         HashIncrease (right_canary_ptr, hash_ptr, 0, sizeof (Canary_t));
     #endif
