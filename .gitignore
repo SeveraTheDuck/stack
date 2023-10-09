@@ -1,0 +1,8 @@
+object/
+.DS_Store
+run
+.vscode/
+html/
+index.html
+Doxygen.txt
+doxygen-awesome-css/
