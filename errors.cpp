@@ -255,7 +255,7 @@ void StackErrorOutput (const ErrorType* const stack_err)
 
     if (!stack_err->STACK_ERROR_OCCURED)
     {
-        PrintLog(log_file_name, "\nNo errors occured");
+        PrintLog(log_file_name, "\nNo errors occured\n");
         return;
     }
 
