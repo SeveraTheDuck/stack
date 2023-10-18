@@ -22,7 +22,7 @@ ErrorType StackCtor (Stack* const stk,
         stk->init_func = init_func;
     #endif
 
-    stk->stack_err     = {};
+    memset (&stk->stack_err, 0, sizeof (ErrorType));
 
     #ifdef CANARY_PROTECTION
         stk->left_canary  = CANARY_VALUE;
@@ -104,15 +104,15 @@ ErrorType StackDataAlloc (Stack* const stk, Elem_t* const allocated_memory)
         return stk->stack_err;
     }
 
-    #ifdef CANARY_PROTECTION
-        stk->data = (Elem_t*) ((Canary_t*)(void*) stk->data + 1);
-        FillCanary (stk);
-    #endif
-
     for (size_t i = stk->data_size; i < stk->data_capacity; ++i)
     {
         *(stk->data + i) = POISON;
     }
+
+    #ifdef CANARY_PROTECTION
+        stk->data = (Elem_t*) ((Canary_t*)(void*) stk->data + 1);
+        FillCanary (stk);
+    #endif
 
     #ifdef HASH_PROTECTION
         StackFindHash     (stk, &stk->hash_value);
