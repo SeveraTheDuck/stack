@@ -13,17 +13,17 @@ const Elem_t POISON = -31415926;
 
 /// @brief This define is for debug regime.
 /// It provides more complex output for STACK_DUMP() and more information in stack struct.
-// #define _DEBUG
+#define _DEBUG
 
 /// @brief This define enables canary protection.
 /// Undefine or comment the string below to switch 'em off.
 /// Canaries are located on both sides of stack struct and stack data.
-// #define CANARY_PROTECTION
+#define CANARY_PROTECTION
 
 /// @brief This define enables hash protection.
 /// Undefine or comment the string below to switch it off.
 /// The program uses simple hash protection - summ of bytes.
-// #define HASH_PROTECTION
+#define HASH_PROTECTION
 
 /// @brief This const tells the program the initial capacity of stack.
 const size_t INIT_CAPACITY      = 4;
