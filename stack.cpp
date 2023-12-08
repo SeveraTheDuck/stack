@@ -130,8 +130,6 @@ ErrorType FillCanary (Stack* const stk)
     *((Canary_t*)(void*)  stk->data - 1)                  = CANARY_VALUE;
     *( Canary_t*)(void*) (stk->data + stk->data_capacity) = CANARY_VALUE;
 
-    STACK_VERIFY (stk);
-
     return stk->stack_err;
 }
 #endif
@@ -165,8 +163,6 @@ ErrorType StackPush (Stack* const stk, const Elem_t value)
 
         StackHashError (stk);
     #endif
-
-    STACK_VERIFY (stk);
 
     return stk->stack_err;
 }
@@ -204,7 +200,6 @@ ErrorType StackPop (Stack* const stk, Elem_t* const return_value)
         StackHashError (stk);
     #endif
 
-    STACK_VERIFY (stk);
     return stk->stack_err;
 }
 

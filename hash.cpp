@@ -1,5 +1,5 @@
 #include "headers/hash.h"
-#include "../config.h"
+#include "config.h"
 
 #ifdef HASH_PROTECTION
 
