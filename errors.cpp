@@ -69,12 +69,12 @@ Error_t StackVerify (Stack* const stk)
             stk->stack_err.STACK_LEFT_CANARY_DAMAGED       = 1;
         }
 
-        if (stk->right_canary != CANARY_VALUE)
+        if (stk->left_canary != CANARY_VALUE)
         {
-            stk->stack_err.STACK_RIGHT_CANARY_DAMAGED      = 1;
+            stk->stack_err.STACK_LEFT_CANARY_DAMAGED      = 1;
         }
 
-        if (*((Canary_t*)(void*) stk->data - 1) != CANARY_VALUE)
+        if (*(Canary_t*)(void*) (stk->data + stk->data_capacity) != CANARY_VALUE)
         {
             stk->stack_err.STACK_DATA_LEFT_CANARY_DAMAGED  = 1;
         }
