@@ -40,7 +40,7 @@
 #include <assert.h>
 #include <string.h>
 
-#include "config.h"
+#include "../../config.h"
 #include "const.h"
 #include "errors.h"
 

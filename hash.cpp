@@ -1,5 +1,5 @@
 #include "headers/hash.h"
-#include "config.h"
+#include "../config.h"
 
 #ifdef HASH_PROTECTION
 
@@ -37,6 +37,12 @@ ErrorType StackFindHash (Stack*  const stk,
 
     HashIncrease (ptr, hash_ptr, begin, border);
 
+    #ifdef CANARY_PROTECTION
+        size_t canary_begin  = sizeof (Stack) - sizeof (Canary_t);
+        size_t canary_border = sizeof (Stack);
+        HashIncrease (ptr, hash_ptr, canary_begin, canary_border);
+    #endif
+
     return stk->stack_err;
 }
 
@@ -47,7 +53,9 @@ ErrorType StackDataFindHash (Stack*  const stk,
     HashIncrease (ptr, hash_ptr, 0, stk->data_capacity * sizeof (Elem_t));
 
     #ifdef CANARY_PROTECTION
+        char* left_canary_ptr  = (ptr - sizeof(Canary_t));
         char* right_canary_ptr = (ptr + stk->data_capacity * sizeof (Elem_t));
+        HashIncrease (left_canary_ptr,  hash_ptr, 0, sizeof (Canary_t));
         HashIncrease (right_canary_ptr, hash_ptr, 0, sizeof (Canary_t));
     #endif
 
