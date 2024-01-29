@@ -1,217 +1,256 @@
-#include "headers/stack.h"
+#include "stack.h"
 
-#ifdef HASH_PROTECTION
-    #include "headers/hash.h"
-#endif
+#define STACK_VERIFY(stk)           \
+    if (StackVerify (stk))          \
+    {                               \
+        StackDump (stk);            \
+                                    \
+        if (stk == nullptr)         \
+            return STACK_NULLPTR;   \
+        return stk -> error_status; \
+    }
 
-ErrorType StackCtor (Stack* const stk,
-                     #ifdef _DEBUG
-                         STACK_CTOR_RECIVE_INFO
-                     #endif
-                     size_t stack_capacity)
+static void
+StackPrintErrors (const stack_error_t error_code);
+
+static stack_error_t
+StackRealloc (stack* const stk);
+
+stack_error_t
+StackConstructor (stack* const stk, STACK_CTOR_RECIVE_INFO,
+                  const size_t stack_elem_size)
 {
-    assert (stk);
+    if (stk == nullptr) 
+        return STACK_NULLPTR;
 
-    stk->data_size     = 0;
-    stk->data_capacity = stack_capacity;
+    stk -> data_array          = nullptr;
+    stk -> data_array_capacity = STACK_DATA_ARRAY_INITIAL_CAPACITY;
+    stk -> data_array_size     = STACK_NULL_SIZE;
+    stk -> elem_size           = stack_elem_size;
+    stk -> error_status        = NO_ERROR;
 
-    #ifdef _DEBUG
-        stk->init_name = init_name;
-        stk->init_line = init_line;
-        stk->init_file = init_file;
-        stk->init_func = init_func;
-    #endif
+    stk -> init_name = stack_init_name;
+    stk -> init_file = stack_init_file;
+    stk -> init_func = stack_init_func;
+    stk -> init_line = stack_init_line;
 
-    memset (&stk->stack_err, 0, sizeof (ErrorType));
-
-    #ifdef CANARY_PROTECTION
-        stk->left_canary  = CANARY_VALUE;
-        stk->right_canary = CANARY_VALUE;
-    #endif
-
-    #ifdef HASH_PROTECTION
-        stk->hash_value = 0;
-    #endif
-
-    StackDataAlloc (stk, nullptr);
-
-    STACK_VERIFY (stk);
-
-    return stk->stack_err;
+    if (StackRealloc (stk) == STACK_DATA_NULLPTR)
+        return stk -> error_status;
+    
+    return NO_ERROR;
 }
 
-ErrorType StackDtor (Stack* stk)
+stack_error_t
+StackDestructor (stack* const stk)
 {
-    STACK_VERIFY (stk);
+    if (stk == nullptr)
+        return STACK_NULLPTR;
 
-    #ifdef CANARY_PROTECTION
-        stk->data = (Elem_t*) ((Canary_t*)(void*) stk->data - 1);
-    #endif
+    size_t n_bytes = stk -> data_array_capacity * 
+                     stk -> elem_size;
 
-    free (stk->data);
-    stk->data          = nullptr;
+    stk -> data_array_capacity = STACK_NULL_SIZE;
+    stk -> data_array_size     = STACK_NULL_SIZE;
+    stk -> elem_size           = STACK_NULL_SIZE;
+    stk -> error_status        = NO_ERROR;
 
-    stk->data_size     = 0;
-    stk->data_capacity = 0;
+    stk -> init_name = nullptr;
+    stk -> init_file = nullptr;
+    stk -> init_func = nullptr;
+    stk -> init_line = STACK_NULL_SIZE;
 
-    #ifdef _DEBUG
-        stk->init_line = 0;
-        stk->init_name = nullptr;
-        stk->init_file = nullptr;
-        stk->init_func = nullptr;
-    #endif
-    stk->stack_err     = {};
+    if (stk -> data_array != nullptr)
+        memset (stk -> data_array, STACK_POISON_BYTE, n_bytes);
 
-    #ifdef CANARY_PROTECTION
-        stk->left_canary  = 0;
-        stk->right_canary = 0;
-    #endif
+    free (stk -> data_array);
 
-    #ifdef HASH_PROTECTION
-        stk->hash_value   = 0;
-    #endif
-
-    stk = nullptr;
-    ErrorType stack_dtor_err = {};
-
-    return stack_dtor_err;
+    return NO_ERROR;
 }
 
-ErrorType StackDataAlloc (Stack* const stk, Elem_t* const allocated_memory)
+stack_error_t
+StackVerify (stack* const stk)
 {
-    assert (stk);
+    if (stk == nullptr)
+        return STACK_NULLPTR;
 
-    /// Data align in case of sizeof (Elem_t) != sizeof (Canary_t).
-    #ifdef CANARY_PROTECTION
-        if ((stk->data_capacity *  sizeof (Elem_t))  % sizeof (Canary_t))
+    if (stk -> data_array == nullptr)
+        stk -> error_status |= STACK_DATA_NULLPTR;
+
+    if (stk -> data_array_size > STACK_MAX_SIZE)
+        stk -> error_status |= STACK_INVALID_SIZE;
+
+    if (stk -> data_array_capacity > STACK_MAX_SIZE)
+        stk -> error_status |= STACK_INVALID_CAPACITY;
+    
+    if (stk -> data_array_size > stk -> data_array_capacity)
+        stk -> error_status |= STACK_SIZE_OUT_OF_RANGE;
+
+    return stk -> error_status;
+}
+
+void
+StackDump (const stack* const stk)
+{
+    if (stk == nullptr)
+    {
+        printf ("STACK_NULLPTR ERROR\n");
+        return;
+    }
+
+    printf ("Stack named %s [%p]\n"
+            "from file %s line %zd function %s\n",
+            stk -> init_name, stk, stk -> init_file,
+            stk -> init_line, stk -> init_func);
+
+    if (stk -> data_array)
+    {
+        putchar ('{');
+        putchar ('\n');
+
+        size_t n_bytes = stk -> data_array_capacity * stk -> elem_size;
+
+        for (size_t elem_index = 0;
+                    elem_index < n_bytes;
+                    elem_index += stk -> elem_size)
         {
-            stk->data_capacity += (sizeof (Canary_t) - (stk->data_capacity *
-                                   sizeof (Elem_t))  % sizeof (Canary_t)) /
-                                   sizeof (Elem_t);
+            printf ("\t%zd: ", elem_index / stk -> elem_size);
+            for (size_t byte = 0; byte < stk -> elem_size; byte++)
+            {
+                printf ("%0X ", *((char*) stk -> data_array + 
+                                          elem_index + byte));
+            }
+            putchar ('\n');
         }
-    #endif
 
-    size_t new_size = stk->data_capacity * sizeof (Elem_t);
-
-    #ifdef CANARY_PROTECTION
-        new_size += 2 * sizeof (Canary_t);
-    #endif
-
-    /// Allocation itself.
-    stk->data = (Elem_t*) realloc (allocated_memory, new_size);
-    if (StackDataPtrError (stk))
-    {
-        return stk->stack_err;
+        putchar ('}');
+        putchar ('\n');
     }
 
-    #ifdef CANARY_PROTECTION
-        stk->data = (Elem_t*) ((Canary_t*)(void*) stk->data + 1);
-        FillCanary (stk);
-    #endif
-
-    for (size_t i = stk->data_size; i < stk->data_capacity; ++i)
-    {
-        *(stk->data + i) = POISON;
-    }
-
-    #ifdef HASH_PROTECTION
-        StackFindHash     (stk, &stk->hash_value);
-        StackDataFindHash (stk, &stk->hash_value);
-    #endif
-
-    STACK_VERIFY (stk);
-
-    return stk->stack_err;
+    StackPrintErrors (stk -> error_status);
 }
 
-#ifdef CANARY_PROTECTION
-ErrorType FillCanary (Stack* const stk)
-{
-    *((Canary_t*)(void*)  stk->data - 1)                  = CANARY_VALUE;
-    *( Canary_t*)(void*) (stk->data + stk->data_capacity) = CANARY_VALUE;
-
-    return stk->stack_err;
-}
-#endif
-
-ErrorType StackPush (Stack* const stk, const Elem_t value)
+stack_error_t
+StackPush (stack*      const stk, 
+           const void* const push_value)
 {
     STACK_VERIFY (stk);
 
-    if (stk->data_size == stk->data_capacity)
+    /* realloc */
+    if (stk -> data_array_size == stk -> data_array_capacity)
     {
-        stk->data_capacity *= RESIZE_MULTIPLIER;
-
-        #ifdef CANARY_PROTECTION
-            stk->data = (Elem_t*) ((Canary_t*)(void*) stk->data - 1);
-        #endif
-
-        StackDataAlloc(stk, (Elem_t*) stk->data);
+        stk -> data_array_capacity *= STACK_DATA_ARRAY_EXPANSION_MULTIPLIER;
+        if (StackRealloc (stk) == STACK_DATA_NULLPTR)
+            return stk -> error_status;
     }
 
-    #ifdef HASH_PROTECTION
-        char* hash_ptr = (char*) (stk->data + stk->data_size); // ?
-        HashDecrease (hash_ptr, &stk->hash_value, 0, sizeof (Elem_t));
-    #endif
+    /* push itself */
+    void* const dest_ptr = 
+        StackGetElemPtrByIndex (stk, stk -> data_array_size);
+    stk -> data_array_size++;
 
-    /// The push itself.
-    stk->data[stk->data_size++] = value;
+    memcpy (dest_ptr, push_value, stk -> elem_size);
 
-    #ifdef HASH_PROTECTION
-        stk->hash_value++;
-        HashIncrease (hash_ptr, &stk->hash_value, 0, sizeof (Elem_t));
-
-        StackHashError (stk);
-    #endif
-
-    return stk->stack_err;
+    return NO_ERROR;
 }
 
-ErrorType StackPop (Stack* const stk, Elem_t* const return_value)
+stack_error_t
+StackPop (stack* const stk,
+          void*  const dest_ptr)
 {
     STACK_VERIFY (stk);
 
-    if (INIT_CAPACITY <= stk->data_size &&
-                         stk->data_size * RESIZE_MULTIPLIER * RESIZE_MULTIPLIER <=
-                         stk->data_capacity)
+    if (stk -> data_array_size == STACK_NULL_SIZE)
     {
-        stk->data_capacity /= RESIZE_MULTIPLIER;
-
-        #ifdef CANARY_PROTECTION
-            stk->data = (Elem_t*) ((Canary_t*)(void*) stk->data - 1);
-        #endif
-
-        StackDataAlloc(stk, (Elem_t*) stk->data);
+        fprintf (stderr, "Nothing to pop in StackPop, return\n");
+        return STACK_POP_ELEM_OUT_OF_RANGE;
     }
 
-    #ifdef HASH_PROTECTION
-        char* hash_ptr = (char*) (stk->data + stk->data_size - 1);
-        HashDecrease (hash_ptr, &stk->hash_value, 0, sizeof (Elem_t));
-    #endif
+    /* pop itself and poisoning */
+    void* const pop_ptr =
+        StackGetElemPtrByIndex (stk, stk -> data_array_size - 1);
 
-    /// The pop itself.
-    *return_value = stk->data[--stk->data_size];
-    stk->data[stk->data_size] = POISON;
+    memcpy (dest_ptr, pop_ptr, stk -> elem_size);
+    memset (pop_ptr, STACK_POISON_BYTE, stk -> elem_size);
 
-    #ifdef HASH_PROTECTION
-        stk->hash_value--;
-        HashIncrease (hash_ptr, &stk->hash_value, 0, sizeof (Elem_t));
+    stk -> data_array_size--;
 
-        StackHashError (stk);
-    #endif
+    /* realloc */
+    if (stk -> data_array_size < 
+        stk -> data_array_capacity /  STACK_DATA_ARRAY_EXPANSION_MULTIPLIER)
+    {
+        stk -> data_array_capacity /= STACK_DATA_ARRAY_EXPANSION_MULTIPLIER;
+        if (StackRealloc (stk) == STACK_DATA_NULLPTR)
+            return stk -> error_status;
+    }
 
-    return stk->stack_err;
+    return NO_ERROR;
 }
 
-ErrorType StackPrint (Stack* const stk)
+void* const
+StackGetElemPtrByIndex (stack* const stk,
+                        const size_t elem_index)
 {
-    STACK_VERIFY (stk);
-
-    for (size_t i = 0; i < stk->data_size; ++i)
+    if (StackVerify (stk))
     {
-        printf (OUTPUT_F "\n", stk->data[i]);
+        StackDump (stk);
+        return nullptr;
     }
-    printf ("\n");
 
-    return stk->stack_err;
+    if (elem_index > stk -> data_array_capacity)
+    {
+        fprintf (stderr, "In function StackGetElemByIndex "
+                         "elem_index out of range\n");
+        return nullptr;
+    }
+
+    return (void*) ((char*) stk -> data_array + 
+                            elem_index * stk -> elem_size);
+}
+
+static stack_error_t
+StackRealloc (stack* const stk)
+{
+    assert (stk);
+
+    const size_t n_bytes = stk -> data_array_capacity * 
+                           stk -> elem_size;
+
+    const size_t n_poison_bytes = n_bytes - stk -> data_array_size *
+                                            stk -> elem_size;
+
+    void* new_ptr = realloc (stk -> data_array, n_bytes);
+
+    if (new_ptr == nullptr)
+    {
+        perror ("WARNING! StackRealloc returned nullptr\n");
+        free (stk -> data_array);
+
+        stk -> error_status |= STACK_DATA_NULLPTR;
+
+        return STACK_DATA_NULLPTR;
+    }
+
+    stk -> data_array = new_ptr;
+
+    /* poison new bytes */
+    memset (StackGetElemPtrByIndex (stk, stk -> data_array_size),
+            STACK_POISON_BYTE, n_poison_bytes);
+
+    return NO_ERROR;
+}
+
+static void
+StackPrintErrors (const stack_error_t error_code)
+{
+    if (error_code & STACK_DATA_NULLPTR)
+        fprintf (stderr, "STACK_DATA_NULLPTR ERROR\n");
+
+    if (error_code & STACK_INVALID_SIZE)
+        fprintf (stderr, "STACK_INVALID_SIZE ERROR\n");
+
+    if (error_code & STACK_INVALID_CAPACITY)
+        fprintf (stderr, "STACK_INVALID_CAPACITY ERROR\n");
+
+    if (error_code & STACK_SIZE_OUT_OF_RANGE)
+        fprintf (stderr, "STACK_SIZE_OUT_OF_RANGE ERROR\n");
 }
