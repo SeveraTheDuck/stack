@@ -23,4 +23,4 @@ The stack has following interface:
 3. Pop operation - removes the top element from the stack.
 4. Top operation - copies the top element from the stack into given buffer.
 
-For details see the documentation in `include/stack.h` file.
+For details see the documentation in `include/stack.h` file. You may use this interface for your own implementation.
