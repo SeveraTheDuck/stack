@@ -5,6 +5,8 @@
 // for size_t only
 #include <stddef.h>
 
+// for particular implementation
+#include "dynamic_array.h"
 
 
 /**
@@ -29,7 +31,7 @@
  * @details Contains pushed data and grants access via LIFO method
  * (Last In First Out)
  */
-typedef struct stack stack_t;
+typedef struct stack stack;
 
 
 /**
@@ -66,28 +68,28 @@ typedef size_t stack_error_t;
  *
  * @details Allocates memory for implementation defined stack structure
  */
-stack_t*
+stack*
 StackConstructor (const size_t elem_size);
 
 
 /**
  * @brief Destructor for stack structure
  *
- * @param stack Pointer to the stack
+ * @param stk Pointer to the stack
  *
  * @retval NULL
  *
  * @details Frees memory allocated for the stack structure
  * and its elements
  */
-stack_t*
-StackDestructor (stack_t* const stack);
+stack*
+StackDestructor (stack* const stk);
 
 
 /**
  * @brief Get stack top element
  *
- * @param stack Pointer to the stack
+ * @param stk Pointer to the stack
  * @param buffer Pointer to buffer where to copy the element
  *
  * @retval STACK_SUCCESS if stack element copied successfully
@@ -97,14 +99,14 @@ StackDestructor (stack_t* const stack);
  * @note make sure buffer is at least elem_size bytes long
  */
 stack_error_t
-StackTop (stack_t* const stack,
+StackTop (stack* const stk,
           void* const buffer);
 
 
 /**
  * @brief Push element into stack
  *
- * @param stack Pointer to the stack
+ * @param stk Pointer to the stack
  * @param element Pointer to buffer to copy from
  *
  * @retval STACK_SUCCESS if element copied successfully
@@ -113,14 +115,14 @@ StackTop (stack_t* const stack,
  * @details Copies element into stack and makes it top element
  */
 stack_error_t
-StackPush (stack_t* const stack,
+StackPush (stack* const stk,
            const void* const element);
 
 
 /**
  * @brief Removes top element from stack
  *
- * @param stack Pointer to the stack
+ * @param stk Pointer to the stack
  *
  * @retval STACK_SUCCESS if top element removed successfully
  * @retval STACK_ERROR   if error occured (nullptr or allocation)
@@ -129,7 +131,7 @@ StackPush (stack_t* const stack,
  * makes the previous element top element
  */
 stack_error_t
-StackPop (stack_t* const stack);
+StackPop (stack* const stk);
 
 //-----------------------------------------------------------------------------
 //-----------------------------------------------------------------------------
