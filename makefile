@@ -1,31 +1,47 @@
-CC=g++
-HEADERS=headers/
-FLAGS=-I$(HEADERS) -ggdb3 -std=c++17 -O0 -Wall -Wextra -Weffc++ -Wc++14-compat -Wmissing-declarations -Wcast-align -Wcast-qual -Wchar-subscripts -Wconversion -Wctor-dtor-privacy -Wempty-body -Wfloat-equal -Wformat-nonliteral -Wformat-security -Wformat=2 -Winline -Wnon-virtual-dtor -Woverloaded-virtual -Wpacked -Wpointer-arith -Winit-self -Wredundant-decls -Wshadow -Wsign-conversion -Wsign-promo -Wstrict-overflow=2 -Wsuggest-override -Wswitch-default -Wswitch-enum -Wundef -Wunreachable-code -Wunused -Wvariadic-macros -Wno-missing-field-initializers -Wno-narrowing -Wno-old-style-cast -Wno-varargs -Wstack-protector -fcheck-new -fsized-deallocation -fstack-protector -fstrict-overflow -fno-omit-frame-pointer -Wlarger-than=8192 -fPIE -Werror=vla
-SOURCE_DIR:=.
-BIN_DIR:=object/
-SOURCES:=$(shell find $(SOURCE_DIR) -name "*.cpp")
-obj_unpref:=$(patsubst %.cpp,%.o,$(notdir $(SOURCES)))
-OBJECT:=$(addprefix $(BIN_DIR)/,$(obj_unpref))
-DEP:=$(patsubst %.o,%.o.d,$(OBJECT))
-EXECUTABLE=run
+#------------------------------------------------------------------------------
+#------------------------------------------------------------------------------
 
-$(EXECUTABLE): $(OBJECT) $(BIN_DIR)
-	$(CC) $(FLAGS) $(OBJECT) -o $@
+# Directories
+SOURCE_DIR	:= source/
+INCLUDE_DIR := include/
+OBJECT_DIR 	:= object/
 
+# Files
+SOURCE	:= $(shell find $(SOURCE_DIR) -name "*.c")
+OBJECT  := $(addprefix $(OBJECT_DIR),$(patsubst %.c,%.o,$(notdir $(SOURCE))))
+DEP    	:= $(patsubst %.o,%.o.d, $(OBJECT))
+
+# Executable
+RUN_EXE = stack_exe
+
+# Compilation
+CC 		 	:= gcc
+FLAGS 	 	:= -Wextra -Wall -Wfloat-equal -Wundef -Wshadow -Wpointer-arith -Wcast-align -Wstrict-prototypes -Wwrite-strings -Waggregate-return -Wunreachable-code
+SANITIZE 	:= -fsanitize=address -fsanitize=undefined -fno-sanitize-recover=all -fsanitize=float-divide-by-zero -fsanitize=float-cast-overflow -fno-sanitize=null -fno-sanitize=alignment
+INCLUDE 	:= -I$(INCLUDE_DIR)
+
+#------------------------------------------------------------------------------
+#------------------------------------------------------------------------------
+
+
+
+#------------------------------------------------------------------------------
+#------------------------------------------------------------------------------
+
+# Compile main file
+$(RUN_EXE): $(OBJECT_DIR) $(OBJECT)
+	@$(CC) $(FLAGS) $(SANITIZE) $(INCLUDE) $(OBJECT) -o $@
+
+# Include dependencies
 -include $(DEP)
 
-$(BIN_DIR)%.o: $(SOURCE_DIR)%.cpp
-	make makedirs
-	$(CC) $(FLAGS) -MMD -MF $@.d -c -o $@ $<
+# Make object files
+$(OBJECT_DIR)%.o: $(SOURCE_DIR)%.c
+	@$(CC) $(FLAGS) $(SANITIZE) $(INCLUDE) -MMD -MF $@.d -c -o $@ $<
 
-.PHONY: makedirs clean doxygen
+# Make object directory
+$(OBJECT_DIR):
+	@mkdir -p $@
 
-makedirs:
-	mkdir -p $(BIN_DIR)
-
-clean:
-	rm -rf $(OBJECT)
-	rm -rf $(DEP)
-
-doxygen:
-	doxygen ./doxygen
+#------------------------------------------------------------------------------
+#------------------------------------------------------------------------------
